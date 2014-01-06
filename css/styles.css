@@ -22,7 +22,7 @@ li {font-family: 'TitilliumWeb-ExtraLight';	}
 #search-form-tengah {margin-top: -34px;padding: 10px; background: #FFFFFF; width: 960px; height: 65px;border-radius: 5px; 
 	margin-bottom: 20px; box-shadow: 0 2px 2px rgba(0,0,0,0.15);}
 
-.search-form-input {width: 890px; height: 40px; background: #E6E6E6; border: 0px solid #E6E6E6;
+.search-form-input {width: 890px; height: 45px; background: #E6E6E6; border: 0px solid #E6E6E6;
 					 box-shadow: 1px 1px 0px #E6E6E6; font-family: 'TitilliumWeb-ExtraLight'; font-size: 20px; padding-left: 10px; font-weight: bold;}
 
 .search-form-input:focus {
@@ -63,3 +63,49 @@ li {font-family: 'TitilliumWeb-ExtraLight';	}
 .widget .action { margin-top:5px; }
 .widget .comment-text { font-size: 12px; }
 .widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
+
+.looking-more img{width: 25px; height: 25px;}
+
+.penyangga {margin-top: 50px;}
+
+.full-user {background-image:url('../images/full-user.png'); width: 100%; height: 115px;  }
+
+.full-user-gambar {float: left; width: 180px; margin: 30px; }
+
+.full-user-gambar ul {margin-top: 14px;}
+
+.full-user-gambar ul li {display: block;  border-bottom: 1px solid black; padding: 5px;   }
+
+.full-user-gambar ul li:hover {
+	
+	border-bottom: 1px dotted #C3C3C3;
+	
+}
+
+.full-user-gambar ul li img {margin-top:-5px;}
+
+.full-user-gambar ul li a {font-weight: bold; color: black;  margin-left: 10px;}
+
+.full-user-gambar ul li a:hover {
+	text-decoration: none;
+	color: gray;
+	-webkit-transition: all 0.2s linear;
+   -moz-transition: all 0.2s linear;
+   -o-transition: all 0.2s linear;
+   -ms-transition: all 0.2s linear;
+   transition: all 0.2s linear;
+}
+
+.full-user-name {float: left; margin-top: 30px; width: 800px;}
+
+.full-user-in {box-shadow: 0 2px 2px rgba(0,0,0,0.15); border-radius: 4px; }
+
+.full-user-name ul {margin-left: 0px; margin-top: -10px;}
+
+.full-user-name ul li {display: inline;margin-left: 10px;}
+.full-user-name ul li img {margin-top:-5px; width: 18px;}
+.img-thumbnail {width: 180px;}
+
+.full-user-name-bio {margin-top: 45px; width: 90%; /*background: blue;*/}
+
+.full-user-name-bio .dl-horizontal {margin-left: -70px;}

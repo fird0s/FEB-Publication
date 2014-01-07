@@ -43,7 +43,7 @@
 						</li>
 						
 						<li>
-							<img src="images/glyphicons_010_envelope.png" style="width: 20px;"> <a href="#">Contact Me</a></img>
+							<img src="images/18-envelope.png" style="width: 20px;"> <a href="#">Contact Me</a></img>
 						</li>
 					</ul>
 				</div>
@@ -77,8 +77,21 @@ Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magn
 Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus</dd>
 						</dl>
 					</div>
+					
+					<div class="full-user-job">
+						<ul>
+							<li>
+								<a href="#"><img src="images/cv.png">Download CV</img></a>
+							</li>
+							
+							<li>
+								<a href="#" style="background: #B2D99A;"><img src="images/glyphicons_357_suitcase.png">Hire Me</img></a>
+							</li>
+						</ul>
+					</div>
+					
 				</div>
-				<hr style="clear:both"></hr>
+				<br style="clear:both;"></hr>
 			</div>					
 		</div>
 </div>    

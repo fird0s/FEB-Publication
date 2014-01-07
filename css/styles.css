@@ -68,7 +68,7 @@ li {font-family: 'TitilliumWeb-ExtraLight';	}
 
 .penyangga {margin-top: 50px;}
 
-.full-user {background-image:url('../images/full-user.png'); width: 100%; height: 115px;  }
+.full-user {background-image:url('../images/texture_grain_200x200_v2.png'); width: 100%; height: 115px;  }
 
 .full-user-gambar {float: left; width: 180px; margin: 30px; }
 
@@ -98,7 +98,7 @@ li {font-family: 'TitilliumWeb-ExtraLight';	}
 
 .full-user-name {float: left; margin-top: 30px; width: 800px;}
 
-.full-user-in {box-shadow: 0 2px 2px rgba(0,0,0,0.15); border-radius: 4px; }
+.full-user-in {box-shadow: 0 2px 2px rgba(0,0,0,0.15); border-radius: 4px; padding-bottom: 20px; }
 
 .full-user-name ul {margin-left: 0px; margin-top: -10px;}
 
@@ -109,3 +109,20 @@ li {font-family: 'TitilliumWeb-ExtraLight';	}
 .full-user-name-bio {margin-top: 45px; width: 90%; /*background: blue;*/}
 
 .full-user-name-bio .dl-horizontal {margin-left: -70px;}
+
+.full-user-job {width: 500px;  height: 40px; margin-left: 100px; padding-top: 10px;}
+
+.full-user-job img {margin-right: 10px; padding-top: 2px;}
+
+.full-user-job ul   { padding-top: 10px;}
+
+.full-user-job ul li a {background:#A0B5C8; padding: 5px; padding-left: 8px; padding-right: 18px; border-radius: 5px; color: white; font-weight: bold; font-family: 'TitilliumWeb-ExtraLight'; font-size: 18px;  box-shadow: 1px 1px 1px rgba(0,0,0,0.14); }
+
+.full-user-job ul li a:hover {text-decoration: none; background: #E0E0E0; color: black; text-decoration: none;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.15);
+	-webkit-transition: all 0.10s linear;
+   -moz-transition: all 0.10s linear;
+   -o-transition: all 0.10s linear;
+   -ms-transition: all 0.10s linear;
+   transition: all 0.10s linear;}
+

@@ -22,12 +22,12 @@
 </div>
     
 <div class="penyangga">
-	<p>asdsa</p>
 </div>
 
 <style>
-
+body {background: #FFF !important;}
 #latest-articles {padding-bottom:0px;}
+.kananku {float: right;}
 </style>
 
 <div id="latest-articles" >
@@ -38,6 +38,7 @@
 					<ul>
 						<li>
 							<img src="images/111-user.png" style="width: 20px;"> <a href="#">Profile</a> </img>
+							<span class="kananku">-></span>
 						</li>
 					
 						<li>

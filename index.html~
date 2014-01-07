@@ -1,4 +1,6 @@
 <!DOCTYPE HTML>
+<html manifest="demo_html.appcache">
+
 <html>
 <head>
 	<title> E-Learning Fekon</title>
@@ -24,7 +26,7 @@
 <div id="header-bg">
 	<div class="container_24 ">
 		<div class="quotes">
-			<h1>"A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools" - said <u>Prof. Dr. Raja Masbar, M.Sc</u></h1>
+			<h1>"You can't connect the dots looking forward; you can only connect them looking backwards. So you have to trust that the dots will somehow connect in your future" - said <u>Prof. Dr. Raja Masbar, M.Sc</u></h1>
 		</div>
 	</div>
 </div>

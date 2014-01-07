@@ -22,11 +22,16 @@
 </div>
 
 <div id="header-bg">
+	<div class="container_24 ">
+		<div class="quotes">
+			<h1>"A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools" - said <u>Prof. Dr. Raja Masbar, M.Sc</u></h1>
+		</div>
+	</div>
 </div>
 
 <div id="search-form-tengah" class="container_24 push_7 ">
 	<form class="search-form-tengah">
-		<input type="text" class="search-form-input" placeholder="Search">
+		<input type="text" class="search-form-input" placeholder="Search Article">
 		<input type="submit" id="search-button" value="Search">
 	</form>
 </div>
@@ -170,7 +175,6 @@
 
 	
 <hr style="margin-top: 45px;position: relative;display: block;border-top: 1px solid #cbcbcb;"></hr>
-<p style="text-align: center; margin-top: 30px;">E-Learning Fekon is Fe Project</p>	
 
 </body>
 </html>

@@ -22,9 +22,11 @@
 </div>
     
 <div class="penyangga">
+	<p>asdsa</p>
 </div>
 
 <style>
+
 #latest-articles {padding-bottom:0px;}
 </style>
 
@@ -85,7 +87,7 @@ Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magn
 							</li>
 							
 							<li>
-								<a href="#" style="background: #B2D99A;"><img src="images/glyphicons_357_suitcase.png">Hire Me</img></a>
+								<a href="#" style="background: #A0B5C8;"><img src="images/glyphicons_357_suitcase.png">Hire Me</img></a>
 							</li>
 						</ul>
 					</div>

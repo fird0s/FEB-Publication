@@ -17,7 +17,7 @@ li {font-family: 'TitilliumWeb-ExtraLight';	}
 
 .menu li a {text-decoration: none; color: white;  font-size: 14px; text-transform: uppercase; font-weight: bold;}
 
-#header-bg {width: 1024; height: 370px; background: gray;}
+#header-bg {width: 1024; height: 470px; background: gray; background-image:url('../images/bg-header.jpg'); background-size: 2000px 700px; background-position:center; background-attachment:fixed;}
 
 #search-form-tengah {margin-top: -34px;padding: 10px; background: #FFFFFF; width: 960px; height: 65px;border-radius: 5px; 
 	margin-bottom: 20px; box-shadow: 0 2px 2px rgba(0,0,0,0.15);}
@@ -116,13 +116,17 @@ li {font-family: 'TitilliumWeb-ExtraLight';	}
 
 .full-user-job ul   { padding-top: 10px;}
 
-.full-user-job ul li a {background:#A0B5C8; padding: 5px; padding-left: 8px; padding-right: 18px; border-radius: 5px; color: white; font-weight: bold; font-family: 'TitilliumWeb-ExtraLight'; font-size: 18px;  box-shadow: 1px 1px 1px rgba(0,0,0,0.14); }
+.full-user-job ul li a {background:#DA4C2F; padding: 5px; padding-left: 8px; padding-right: 18px; border-radius: 5px; color: white; font-weight: bold; font-family: 'TitilliumWeb-ExtraLight'; font-size: 18px;  box-shadow: 1px 1px 1px rgba(0,0,0,0.14); }
 
 .full-user-job ul li a:hover {text-decoration: none; background: #E0E0E0; color: black; text-decoration: none;
-	
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.15);
 	-webkit-transition: all 0.10s linear;
    -moz-transition: all 0.10s linear;
    -o-transition: all 0.10s linear;
    -ms-transition: all 0.10s linear;
    transition: all 0.10s linear;}
+   
+.quotes {margin-top: 330px; text-align: center; }
+ 
+.quotes h1 {font-size: 23px; font-style:italic; color: white;}
 

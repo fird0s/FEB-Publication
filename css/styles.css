@@ -130,3 +130,27 @@ li {font-family: 'TitilliumWeb-ExtraLight';	}
  
 .quotes h1 {font-size: 23px; font-style:italic; color: white;}
 
+.articles-thumbnail li {display: block; width: 30%; height: 140px; float: left; margin-top: 20px; margin: 10px;}
+
+.articles-thumbnail li:hover {
+	box-shadow: 1px 2px 1px 1px rgba(0,0,0,0.15);
+	-webkit-transition: all 0.10s linear;
+   -moz-transition: all 0.10s linear;
+   -o-transition: all 0.10s linear;
+   -ms-transition: all 0.10s linear;
+   transition: all 0.10s linear;}
+  
+
+.articles-thumbnail li a {color: black;}
+
+
+.latest-articles-kiri {float: left;}
+.latest-articles-kiri img {
+	border: 2px solid #FFF;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.3);}
+	
+.latest-articles-kanan {float: left; width: 242px;}
+
+.latest-articles-kanan .articles-kanan-judul {margin-left: 5px; font-size: 18px; line-height: 17px; font-weight: bolder !important;  margin-top: 3px; width: 100%; }
+
+.by { margin-left: 7px;}

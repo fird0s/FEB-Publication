@@ -9,7 +9,7 @@
 	
 </head>
 <body>
-<div id="header" style="margin-top: 1px;">
+<div id="header" style="">
 	<div class="container_24">
 		<div class="grid_22">
 			<ul class="menu">
@@ -49,8 +49,8 @@
 				
 				<span class="latest-articles-kanan">
 					<p class="articles-kanan-judul">Kesejahteraan Aceh dan UUPA pada Rakyat Aceh dengan Uang yang Besar</p>
-					<a class="by" href="#"> Prof. Dr. Muhammad Firdaus S. J  </a>
-				</span>
+					<a class="by" href="#"> #Accountancy  </a>
+				</span
 				</a>
 			</li>
 			
@@ -195,7 +195,7 @@
 	</div>
 	<br>
 	<div id="latest-articles" >
-		<p class="head-font">Artikel Terbaru (Our Source)</p><!--http://dpaste.com/1540516/-->
+		<p class="head-font">Artikel Terbaru (Out Source)</p><!--http://dpaste.com/1540516/-->
 		<p style="float: right; margin-top: -50px; margin-right: 20px;" class="btn btn-info" >RSS</p>	
 		<ul class="articles-thumbnail" style="padding-left: 0px;"> 
 			<li>

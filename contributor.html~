@@ -92,23 +92,6 @@
 			</a>	
 			</li>
 			
-			<li><a href="#">
-				<span class="contributor-kiri">
-					<img src="images/contoh.png"></img>
-											
-					</span>				
-				</span>
-				
-				<span class="contributor-kanan">
-					<p class="contributor-nama">Muhammad Firdaus</p>				
-					<img src="images/web.gif"> www.firdauskoder.com</img><br>
-					<img src="images/18-envelope.png" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">  
-					 firdauskoder@gmail.com</img><br>
-					<img src="images/glyphicons_069_gift.png" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">   <b>May 27, 1995</b>  </img>
-				</span>
-			</a>	
-			</li>
-			
 			
 			
 		</ul>

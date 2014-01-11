@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>aceh-browns feed</title>
+    <link>https://bitbucket.org/</link>
+
+    <link rel="hub"  href="http://pubsubhubbub.appspot.com/" xmlns="http://www.w3.org/2005/Atom" />
+    <link rel="self" href="https://bitbucket.org/fird0s/aceh-browns/rss" xmlns="http://www.w3.org/2005/Atom" />
+
+    <language>en-us</language>
+    <generator>Bitbucket.org DVCS hosting</generator>
+    <webMaster>firdauskoder@gmail.com (Muhammad Firdaus)</webMaster>
+    <ttl>5</ttl>
+  
+    
+    <item>
+      <title>effect social media
+</title>
+      <link>https://bitbucket.org/fird0s/aceh-browns/commits/bd4b4b122c2f</link>
+      <description>
+    effect social media
+
+    
+    
+      
+      &lt;ul&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/bd4b4b122c2f/index.html&quot;&gt;
+            index.html
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/bd4b4b122c2f/index.html%7E&quot;&gt;
+            index.html~
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/bd4b4b122c2f/media/css/style.css&quot;&gt;
+            media/css/style.css
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/bd4b4b122c2f/media/css/style.css%7E&quot;&gt;
+            media/css/style.css~
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+      &lt;/ul&gt;
+      
+    
+    
+    </description>
+    
+    <author>fird0s &lt;fird0s@sansung.(none)&gt;</author>
+    
+      <pubDate>Mon, 12 Aug 2013 17:13:02 +0000</pubDate>
+      <guid isPermaLink="true">https://bitbucket.org/fird0s/aceh-browns/commits/bd4b4b122c2f</guid>
+    </item>
+    
+  
+    
+    <item>
+      <title>feature for search, category, and social
+</title>
+      <link>https://bitbucket.org/fird0s/aceh-browns/commits/182e2311fcb6</link>
+      <description>
+    feature for search, category, and social
+
+    
+    
+      
+      &lt;ul&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/182e2311fcb6/index.html&quot;&gt;
+            index.html
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/182e2311fcb6/index.html%7E&quot;&gt;
+            index.html~
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/182e2311fcb6/media/css/style.css&quot;&gt;
+            media/css/style.css
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/182e2311fcb6/media/css/style.css%7E&quot;&gt;
+            media/css/style.css~
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/182e2311fcb6/media/img/06-magnify.png&quot;&gt;
+            media/img/06-magnify.png
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/182e2311fcb6/media/img/favico.png&quot;&gt;
+            media/img/favico.png
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/182e2311fcb6/media/img/favico.xcf&quot;&gt;
+            media/img/favico.xcf
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/182e2311fcb6/media/img/glyphicons_121_message_empty.png&quot;&gt;
+            media/img/glyphicons_121_message_empty.png
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/182e2311fcb6/media/img/glyphicons_242_google_maps.png&quot;&gt;
+            media/img/glyphicons_242_google_maps.png
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/182e2311fcb6/media/img/glyphicons_382_google_plus.png&quot;&gt;
+            media/img/glyphicons_382_google_plus.png
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/182e2311fcb6/media/img/glyphicons_410_facebook.png&quot;&gt;
+            media/img/glyphicons_410_facebook.png
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/182e2311fcb6/media/img/glyphicons_411_twitter.png&quot;&gt;
+            media/img/glyphicons_411_twitter.png
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/182e2311fcb6/media/img/glyphicons_417_rss.png&quot;&gt;
+            media/img/glyphicons_417_rss.png
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+      &lt;/ul&gt;
+      
+    
+    
+    </description>
+    
+    <author>fird0s &lt;fird0s@sansung.(none)&gt;</author>
+    
+      <pubDate>Sun, 11 Aug 2013 09:04:15 +0000</pubDate>
+      <guid isPermaLink="true">https://bitbucket.org/fird0s/aceh-browns/commits/182e2311fcb6</guid>
+    </item>
+    
+  
+    
+    <item>
+      <title>fix header and content
+</title>
+      <link>https://bitbucket.org/fird0s/aceh-browns/commits/262f215bf631</link>
+      <description>
+    fix header and content
+
+    
+    
+      
+      &lt;ul&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/262f215bf631/media/js/coda-slider.1.1.1.pack.js&quot;&gt;
+            media/js/coda-slider.1.1.1.pack.js
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/262f215bf631/media/js/jquery-1.2.6.min.js&quot;&gt;
+            media/js/jquery-1.2.6.min.js
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/262f215bf631/media/js/jquery-easing-1.3.pack.js&quot;&gt;
+            media/js/jquery-easing-1.3.pack.js
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/262f215bf631/media/js/jquery-easing-compatibility.1.2.pack.js&quot;&gt;
+            media/js/jquery-easing-compatibility.1.2.pack.js
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/262f215bf631/media/js/ycodaslider-2.0.pack.js&quot;&gt;
+            media/js/ycodaslider-2.0.pack.js
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+      &lt;/ul&gt;
+      
+    
+    
+    </description>
+    
+    <author>Muhammad Firdaus</author>
+    
+      <pubDate>Mon, 5 Aug 2013 15:49:01 +0000</pubDate>
+      <guid isPermaLink="true">https://bitbucket.org/fird0s/aceh-browns/commits/262f215bf631</guid>
+    </item>
+    
+  
+    
+    <item>
+      <title>fix header and content
+</title>
+      <link>https://bitbucket.org/fird0s/aceh-browns/commits/8415e49e397c</link>
+      <description>
+    fix header and content
+
+    
+    
+      
+      &lt;ul&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/8415e49e397c/index.html&quot;&gt;
+            index.html
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/8415e49e397c/media/css/base.css&quot;&gt;
+            media/css/base.css
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/8415e49e397c/media/css/skeleton.css&quot;&gt;
+            media/css/skeleton.css
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/8415e49e397c/media/css/style.css&quot;&gt;
+            media/css/style.css
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/8415e49e397c/media/img/Untitled.png&quot;&gt;
+            media/img/Untitled.png
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/8415e49e397c/media/img/Untitled.xcf&quot;&gt;
+            media/img/Untitled.xcf
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/8415e49e397c/media/img/bg.png&quot;&gt;
+            media/img/bg.png
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/8415e49e397c/media/img/icon-uparrowsmallwhite.png&quot;&gt;
+            media/img/icon-uparrowsmallwhite.png
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/8415e49e397c/media/js/coda-slider.1.1.1.pack.js&quot;&gt;
+            media/js/coda-slider.1.1.1.pack.js
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/8415e49e397c/media/js/jquery-1.2.6.min.js&quot;&gt;
+            media/js/jquery-1.2.6.min.js
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/8415e49e397c/media/js/jquery-easing-1.3.pack.js&quot;&gt;
+            media/js/jquery-easing-1.3.pack.js
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/8415e49e397c/media/js/jquery-easing-compatibility.1.2.pack.js&quot;&gt;
+            media/js/jquery-easing-compatibility.1.2.pack.js
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/8415e49e397c/media/js/ycodaslider-2.0.pack.js&quot;&gt;
+            media/js/ycodaslider-2.0.pack.js
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+      &lt;/ul&gt;
+      
+    
+    
+    </description>
+    
+    <author>Muhammad Firdaus</author>
+    
+      <pubDate>Mon, 5 Aug 2013 15:48:20 +0000</pubDate>
+      <guid isPermaLink="true">https://bitbucket.org/fird0s/aceh-browns/commits/8415e49e397c</guid>
+    </item>
+    
+  
+    
+    <item>
+      <title>commit pertama
+</title>
+      <link>https://bitbucket.org/fird0s/aceh-browns/commits/41b60ee42ebf</link>
+      <description>
+    commit pertama
+
+    
+    
+      
+      &lt;ul&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/41b60ee42ebf/index.html&quot;&gt;
+            index.html
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/41b60ee42ebf/media/css/base.css&quot;&gt;
+            media/css/base.css
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/41b60ee42ebf/media/css/layout.css&quot;&gt;
+            media/css/layout.css
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/41b60ee42ebf/media/css/skeleton.css&quot;&gt;
+            media/css/skeleton.css
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/41b60ee42ebf/media/css/style.css&quot;&gt;
+            media/css/style.css
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/41b60ee42ebf/media/img/Untitled.png&quot;&gt;
+            media/img/Untitled.png
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/41b60ee42ebf/media/img/Untitled.xcf&quot;&gt;
+            media/img/Untitled.xcf
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/41b60ee42ebf/media/img/header.png&quot;&gt;
+            media/img/header.png
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+        
+        &lt;li&gt;
+          &lt;a href=&quot;https://bitbucket.org/fird0s/aceh-browns/src/41b60ee42ebf/media/img/texture1.jpg&quot;&gt;
+            media/img/texture1.jpg
+          &lt;/a&gt;
+        &lt;/li&gt;
+      
+      &lt;/ul&gt;
+      
+    
+    
+    </description>
+    
+    <author>Muhammad Firdaus</author>
+    
+      <pubDate>Mon, 5 Aug 2013 05:04:08 +0000</pubDate>
+      <guid isPermaLink="true">https://bitbucket.org/fird0s/aceh-browns/commits/41b60ee42ebf</guid>
+    </item>
+    
+  
+  </channel>
+</rss>

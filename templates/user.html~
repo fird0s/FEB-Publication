@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title> E-Learning Fekon</title>
-	<link rel="stylesheet" type="text/css"href="css/960_24_col_rtl.css">
-	<link rel="stylesheet" type="text/css"href="css/styles.css">
-	<link rel="stylesheet" type="text/css"href="css/bootstrap.min.css">
+	<title> Muhammad Firdaus | E-Learning Fekon</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/960_24_col_rtl.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
 	
 </head>
 <body>
@@ -34,19 +34,19 @@ body {background: #FFF !important;}
 		<div class="full-user"> 
 			<div class="full-user-in"> 
 				<div class="full-user-gambar">
-					<img class="img-thumbnail" src="images/addyosmani.75.png"></img>
+					<img class="img-thumbnail" src="{{ url_for('static', filename='images/addyosmani.75.png')}}"></img>
 					<ul>
 						<li>
-							<img src="images/111-user.png" style="width: 20px;"> <a href="#">Profile</a> </img>
+							<img src="{{ url_for('static', filename='images/111-user.png')}}" style="width: 20px;"> <a href="#">Profile</a> </img>
 							<span class="arrow-user">&#x2192; </span>
 						</li>
 					
 						<li>
-							<img src="images/37-suitcase.png" style="width: 20px;"> <a href="#">Recent Post</a></img>
+							<img src="{{ url_for('static', filename='images/37-suitcase.png')}}" style="width: 20px;"> <a href="#">Recent Post</a></img>
 						</li>
 						
 						<li>
-							<img src="images/18-envelope.png" style="width: 20px;"> <a href="#">Contact Me</a></img>
+							<img src="{{ url_for('static', filename='images/18-envelope.png')}}" style="width: 20px;"> <a href="#">Contact Me</a></img>
 						</li>
 					</ul>
 				</div>
@@ -54,10 +54,10 @@ body {background: #FFF !important;}
 					<p class="head-font"><u>Muhammad Firdaus</u></p>
 					<ul>
 						<li>
-							<img src="images/glyphicons_340_globe.png"> Indonesia - Banda Aceh</img>
+							<img src="{{ url_for('static', filename='images/glyphicons_340_globe.png')}}"> Indonesia - Banda Aceh</img>
 						</li>
 						<li>
-							<img src="images/37-suitcase.png"> Lecturer - University of Syiah Kuala</img>
+							<img src="{{ url_for('static', filename='images/37-suitcase.png')}}"> Lecturer - University of Syiah Kuala</img>
 						</li>
 					</ul>
 				
@@ -84,7 +84,7 @@ Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magn
 					<div class="full-user-job">
 						<ul>
 							<li>
-								<a href="#"><img src="images/cv.png">Download CV</img></a>
+								<a href="#"><img src="{{ url_for('static', filename='images/cv.png')}}">Download CV</img></a>
 							</li>
 							
 							<li>

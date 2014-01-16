@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 	<title>Admin</title>
-	<link rel="stylesheet" type="text/css"href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">	
 </head>
 <style>
 body {
@@ -11,24 +11,24 @@ body {
 }
 
 .navbar {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   
 }
 
-body { padding-top:30px; }
+body { padding-top:10px; }
 .widget .panel-body { padding:0px; }
 .widget .list-group { margin-bottom: 0; }
 .widget .panel-title { display:inline }
 .widget .label-info { float: right; }
-.widget li.list-group-item {padding: 10px;border-radius: 0;border: 1;border-top: 1px solid #ddd; width: 50%; float: left;}
-.widget li.list-group-item a {font-size: 16px;}
+.widget li.list-group-item {;border-radius: 0;border: 1;border-top: 1px solid #ddd; width: 50%; float: left; }
+.widget li.list-group-item a {font-size: 16px; }
 .widget li.list-group-item:hover { background-color: rgba(86,61,124,.1); }
 .widget .mic-info { color: #666666;font-size: 13px; }
 .widget .action { margin-top:5px; }
 .widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
 
 </style>
-<body>
+<body>{% for user in user %}
 <div class="container">
       <!-- Static navbar -->
       <div class="navbar navbar-default" role="navigation">
@@ -42,22 +42,22 @@ body { padding-top:30px; }
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">BERANDA</a></li>
-            <li><a href="#">PROFIL KU</a></li>
+            <li><a href="{{ url_for('admin')}}">BERANDA</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">JOURNAL<b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">JURNAL<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li ><a  href="#">Semua Journal </a></li>
-                <li ><a  href="#">Setting Journal</a></li>
+               <li ><a  href="#">Semua Journal </a></li>
                 <li ><a  href="#">Tambah Journal</a></li>
+                <li ><a  href="#">Setting Journal</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">            
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="../images/111-user.png"></img> Muhammad Firdaus <b class="caret"></b></a>
+            
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ url_for('static', filename='images/111-user.png')}}"></img> {{ user.fullname }} <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Setting Account</a></li>
+                <li><a href="{{ url_for('setting_account') }}">Setting Account</a></li>
                 <li><a href="#">Setting Profile</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Logout</a></li>
@@ -65,6 +65,7 @@ body { padding-top:30px; }
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>-->
               </ul>
+           
             </li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -81,10 +82,10 @@ body { padding-top:30px; }
 	                                    <i class="icon-chevron-left hide-sidebar"><a href="#" title="Hide Sidebar" rel="tooltip">&nbsp;</a></i>
 	                                    <i class="icon-chevron-right show-sidebar" style="display:none;"><a href="#" title="Show Sidebar" rel="tooltip">&nbsp;</a></i>
 	                                    <li>
-	                                        <a href="#">Administrator</a> 
+	                                        <a href="/user/{{ user.id }}">{{ user.fullname }}</a> 
 	                                    </li>
 	                                    <li>
-	                                        <a href="#">Journal</a>
+	                                        <a href="#">Jurnal</a>
 	                                    </li>
 	                                    <li class="active">Semua Jurnal</li>
 	         </ul>
@@ -96,9 +97,9 @@ body { padding-top:30px; }
     <div class="row">
         <div class="panel panel-default widget">
             <div class="panel-heading">
-                <span><img src="../images/37-suitcase.png"></img></span>
+                <span><img src="{{ url_for('static', filename='images/37-suitcase.png')}}"></img></span>
                 <h3 class="panel-title">
-                    Journal</h3>
+                    Jurnal</h3>
                 <span class="label label-info">
                     78</span>
             </div>
@@ -111,7 +112,7 @@ body { padding-top:30px; }
                                     <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
                                         Google Style Login Page Design Using Bootstrap</a>
                                     <div class="mic-info">
-                                        on: 2 Aug 2013
+                                        on: 2, Aug 2013
                                     </div>
                                 </div>
                                
@@ -136,7 +137,7 @@ body { padding-top:30px; }
                                     <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
                                         Google Style Login Page Design Using Bootstrap</a>
                                     <div class="mic-info">
-                                        on: 2 Aug 2013
+                                        on: 2, Aug 2013
                                     </div>
                                 </div>
                                
@@ -162,7 +163,7 @@ body { padding-top:30px; }
                                     <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
                                         Google Style Login Page Design Using Bootstrap</a>
                                     <div class="mic-info">
-                                        on: 2 Aug 2013
+                                        on: 2, Aug 2013
                                     </div>
                                 </div>
                                
@@ -187,7 +188,7 @@ body { padding-top:30px; }
                                     <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
                                         Google Style Login Page Design Using Bootstrap</a>
                                     <div class="mic-info">
-                                        on: 2 Aug 2013
+                                        on: 2, Aug 2013
                                     </div>
                                 </div>
                                
@@ -211,9 +212,8 @@ body { padding-top:30px; }
         </div>
     </div>
 </div>
-	
-	<script src="../js/jquery-1.10.2.min.js"></script>
- 	<script src="../js/bootstrap.min.js"></script>
- 
+	<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
+ 	<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+   {% endfor %} 
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 	<title>Admin</title>
-	<link rel="stylesheet" type="text/css"href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">	
 </head>
 <style>
 body {
@@ -28,7 +28,7 @@ body { padding-top:10px; }
 .widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
 
 </style>
-<body>
+<body>{% for user in user %}
 <div class="container">
       <!-- Static navbar -->
       <div class="navbar navbar-default" role="navigation">
@@ -42,22 +42,22 @@ body { padding-top:10px; }
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">BERANDA</a></li>
-            <li><a href="#">PROFIL KU</a></li>
+            <li><a href="{{ url_for('admin')}}">BERANDA</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">JURNAL<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li ><a  href="#">Semua Jurnal </a></li>
-                <li ><a  href="#">Tambah Jurnal</a></li>
-                <li ><a  href="#">Setting Jurnal</a></li>
+                <li ><a  href="#">Semua Journal </a></li>
+                <li ><a  href="#">Tambah Journal</a></li>
+                <li ><a  href="#">Setting Journal</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">            
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="../images/111-user.png"></img> Muhammad Firdaus <b class="caret"></b></a>
+            
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ url_for('static', filename='images/111-user.png')}}"></img> {{ user.fullname }} <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Setting Account</a></li>
+                <li><a href="{{ url_for('setting_account') }}">Setting Account</a></li>
                 <li><a href="#">Setting Profile</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Logout</a></li>
@@ -65,6 +65,7 @@ body { padding-top:10px; }
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>-->
               </ul>
+           
             </li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -81,7 +82,7 @@ body { padding-top:10px; }
 	                                    <i class="icon-chevron-left hide-sidebar"><a href="#" title="Hide Sidebar" rel="tooltip">&nbsp;</a></i>
 	                                    <i class="icon-chevron-right show-sidebar" style="display:none;"><a href="#" title="Show Sidebar" rel="tooltip">&nbsp;</a></i>
 	                                    <li>
-	                                        <a href="#">fird0s</a> 
+	                                        <a href="/user/{{ user.id }}">{{ user.fullname }}</a> 
 	                                    </li>
 	                                    <li>
 	                                        <a href="#">Jurnal</a>
@@ -96,7 +97,7 @@ body { padding-top:10px; }
     <div class="row">
         <div class="panel panel-default widget">
             <div class="panel-heading">
-                <span><img src="../images/37-suitcase.png"></img></span>
+                <span><img src="{{ url_for('static', filename='images/37-suitcase.png')}}"></img></span>
                 <h3 class="panel-title">
                     Jurnal</h3>
                 <span class="label label-info">
@@ -211,9 +212,8 @@ body { padding-top:10px; }
         </div>
     </div>
 </div>
-	
-	<script src="../js/jquery-1.10.2.min.js"></script>
- 	<script src="../js/bootstrap.min.js"></script>
- 
+	<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
+ 	<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+   {% endfor %} 
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 	<title>Admin</title>
-	<link rel="stylesheet" type="text/css"href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">	
 </head>
 <style>
 body {
@@ -27,10 +27,9 @@ body {
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">BERANDA</a></li>
-            <li><a href="#">PROFIL KU</a></li>
+            <li><a href="{{ url_for('admin') }}">BERANDA</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">JOURNAL<b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">JURNAL<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li ><a  href="#">Semua Journal </a></li>
                 <li ><a  href="#">Tambah Journal</a></li>
@@ -40,9 +39,9 @@ body {
           </ul>
           <ul class="nav navbar-nav navbar-right">            
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="../images/111-user.png"></img> Muhammad Firdaus <b class="caret"></b></a>
+              <a href="{{ url_for('admin')}}" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ url_for('static', filename='images/111-user.png')}}"></img> {% for user in user %} {{ user.fullname }} {%endfor%}<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Setting Account</a></li>
+                <li><a href="{{ url_for('setting_account')}}">Setting Account</a></li>
                 <li><a href="#">Setting Profile</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Logout</a></li>
@@ -61,16 +60,18 @@ body {
 <div class="container">
     <div class="navbar">
     	<div class="navbar-inner">
+    		{% for user in user %}
     		<ul class="breadcrumb">
     	                                    <i class="icon-chevron-left hide-sidebar"><a href="#" title="Hide Sidebar" rel="tooltip">&nbsp;</a></i>
     	                                    <i class="icon-chevron-right show-sidebar" style="display:none;"><a href="#" title="Show Sidebar" rel="tooltip">&nbsp;</a></i>
     	                                    <li>
-    	                                        <a href="#">Administrator</a> 
+    	                                        <a href="#">{{ user.fullname }}</a> 
     	                                    </li>
     	                                    <li>
     	                                        <a href="#">Profile</a>
     	                                    </li>
     	                                    <li class="active">Setting Profile</li>
+    	         {% endfor %}                           
     	         </ul>
     	</div>
 </div>
@@ -78,23 +79,23 @@ body {
 
 <div class="container">
                         <dl class="dl-horizontal">
-                          <dt><u>Bio</u></dt>
-                          <dd><textarea class="form-control" rows="4"></textarea> </dd>
+                          <dt><u>Alamat</u></dt>
+                          <dd><input type="text" class="form-control" required></dd>
                         </dl>
                         
                         <dl class="dl-horizontal">
-                          <dt><u>Experiences</u></dt>
-                          <dd><textarea class="form-control" rows="4"></textarea> </dd>
+                          <dt><u>Phone Number</u></dt>
+                          <dd><input type="integer" class="form-control" required> </dd>
                         </dl>
                         
                         <dl class="dl-horizontal">
-                          <dt><u>Interests</u></dt>
-                          <dd><textarea class="form-control" rows="4"></textarea> </dd>
+                          <dt><u>Website / Blog</u></dt>
+                          <dd><input type="URL" class="form-control" required> </dd>
                         </dl>
 
                         <dl class="dl-horizontal">
                           <dt><u>Upload CV</u></dt>
-                          <dd> <input type="file" class="" > </dd>
+                          <dd> <input type="file" class="" required> </dd>
                         </dl>
 
                          <dl class="dl-horizontal">
@@ -108,8 +109,8 @@ body {
 
 
 	
-	<script src="../js/jquery-1.10.2.min.js"></script>
- 	<script src="../js/bootstrap.min.js"></script>
+	<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
+ 	<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
  
 </body>
 </html>

@@ -46,7 +46,7 @@ body { padding-top:10px; }
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">JURNAL<b class="caret"></b></a>
               <ul class="dropdown-menu">
-               <li ><a  href="#">Semua Journal </a></li>
+                <li ><a  href="#">Semua Journal </a></li>
                 <li ><a  href="#">Tambah Journal</a></li>
                 <li ><a  href="#">Setting Journal</a></li>
               </ul>

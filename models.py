@@ -1,4 +1,6 @@
 from mongoengine import *
+from mongoengine.errors import ValidationError
+
 connect('e-learning') #connect ke databases
 import datetime
 
@@ -21,7 +23,7 @@ class Profile(Document):
 	author = ReferenceField(User)
 	alamat = StringField(max_length=80)
 	phone = IntField()
-	website = URLField()
+	website = StringField(max_length=80)
 	date_added = DateTimeField()
 	cv_url = StringField()
 	profile_images_url = StringField(max_length=300)	

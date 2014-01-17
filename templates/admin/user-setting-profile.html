@@ -44,7 +44,7 @@ body {
                 <li><a href="{{ url_for('setting_account')}}">Setting Account</a></li>
                 <li><a href="#">Setting Profile</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
                <!-- <li class="dropdown-header">Nav header</li>
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>-->
@@ -71,38 +71,39 @@ body {
     	                                        <a href="#">Profile</a>
     	                                    </li>
     	                                    <li class="active">Setting Profile</li>
-    	         {% endfor %}                           
     	         </ul>
+    	         {% endfor %}                           
     	</div>
 </div>
 </div>
 
 <div class="container">
+                  <form method="POST" action="{{ url_for('setting_profiles') }}">      
                         <dl class="dl-horizontal">
                           <dt><u>Alamat</u></dt>
-                          <dd><input type="text" class="form-control" required></dd>
+                          <dd><input type="text" name="alamat" class="form-control" value="{{ data.alamat }}" required></dd>
                         </dl>
                         
                         <dl class="dl-horizontal">
                           <dt><u>Phone Number</u></dt>
-                          <dd><input type="integer" class="form-control" required> </dd>
+                          <dd><input type="integer" name="phone" class="form-control" value="{{ data.phone }}" required> </dd>
                         </dl>
                         
                         <dl class="dl-horizontal">
                           <dt><u>Website / Blog</u></dt>
-                          <dd><input type="URL" class="form-control" required> </dd>
+                          <dd><input type="URL" class="form-control" name="website" value="{{ data.website }}" required> </dd>
                         </dl>
 
                         <dl class="dl-horizontal">
                           <dt><u>Upload CV</u></dt>
-                          <dd> <input type="file" class="" required> </dd>
+                          <dd> <input type="file" class=""> </dd>
                         </dl>
 
                          <dl class="dl-horizontal">
                           <dt></dt>
-                          <dd><button type="button" class="btn btn-primary btn-lg">Save Settings </button></dd>
+                          <dd><button type="submit" class="btn btn-primary btn-lg">Save Settings </button></dd>
                         </dl>
-                    
+                    </form>    
 
 </div>
 

@@ -34,11 +34,18 @@ def register():
 				user = User(_id = str(ObjectId()), username=request.form["username"], fullname=request.form["fullname"], email=request.form["email"], \
 				password=request.form["password"], birthday=date(int(request.form["birth-year"]), int(request.form["birth-month"]), \
 			         int(request.form["birth-day"])), gender=request.form["gender"], date_joined=datetime.datetime.now()) 
-			
+				
 				user.save()
+				
+				profile = Profile(author=user, alamat="None", phone="0852", website="www.fe.unsyiah.ac.id", date_added=datetime.datetime.now())
+				profile.save()
+				
 				return "Thanks %s for register, please  <a href='/login'>login here</a>" % (request.form["fullname"])			
 			except NotUniqueError:
 				return "Maaf Email/Username anda sudah teregister"	
+			
+			except ValidationError:
+				return "Maaf Ada kesalahan"	
 			
 			
 					
@@ -106,9 +113,20 @@ def setting_profiles():
 	if "user" in session:
 		get_user = session.get("user", None)
 		user = User.objects(email=get_user)
+		for check in user:
+			data = Profile(author=check._id)
 	else:
 		return redirect(url_for('index'))
-	return render_template("admin/user-setting-profile.html", user=user)
+		
+	if request.method == "POST":
+		if request.form["alamat"] and request.form["phone"] and request.form["website"]:
+			return "ok"		
+	return render_template("admin/user-setting-profile.html", user=user, data=data)
+
+@elearning.route("/admin/logout")
+def admin_logout():	
+	session.pop("user", None)				
+	return redirect(url_for('index'))
 	
 @elearning.route('/user/<email>')
 def user(email):

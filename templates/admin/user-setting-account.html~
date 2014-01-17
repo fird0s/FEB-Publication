@@ -138,9 +138,9 @@ legend{
     	                                        <a href="#">{{ user.fullname }}</a> 
     	                                    </li>
     	                                    <li>
-    	                                        <a href="#">Profile</a>
+    	                                        <a href="#">Account</a>
     	                                    </li>
-    	                                    <li class="active">Setting Profile</li>
+    	                                    <li class="active">Setting Account</li>
     	         </ul>
     	</div>
       

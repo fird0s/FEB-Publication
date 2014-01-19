@@ -2,6 +2,11 @@
 import datetime
 from datetime import date
 from bson.objectid import ObjectId
+import imghdr
+import random
+import string
+import os
+from PIL import Image
 
 #Flask library
 from flask import *
@@ -59,22 +64,18 @@ def login():
 		return redirect(url_for('admin'))
 	if request.method == "POST":
 		if request.form["email"] and request.form["password"]:
-			checklogin = User.objects(email=request.form["email"])
-			for checklogin in checklogin:
-				if checklogin.password != request.form["password"]:
-					return "Error Username atau Password"
-				else:
-					session["user"] = request.form["email"]
-					print "success"
-					return redirect(url_for('admin')) 
-			
+			get_db = User.objects.get(email=request.form["email"])
+			if get_db.password == request.form["password"]:
+				session["user"] = get_db.username
+				return redirect(url_for('admin'))
 	return render_template("login.html")
 
 @elearning.route('/admin/')	
 def admin():
 	if "user" in session:
 		get_user = session.get("user", None)
-		user = User.objects(email=get_user)
+		user = User.objects.get(username=get_user)
+		
 	else:
 		return redirect(url_for('index'))
 		
@@ -84,49 +85,106 @@ def admin():
 def setting_account():
 	if "user" in session:
 		get_user = session.get("user", None)
-		user = User.objects(email=get_user)
+		user = User.objects.get(username=get_user)
 	else:
 		return redirect(url_for('index'))
 	
 	if request.method == "POST":
 		if request.form ["fullname"] and request.form ["email"] and request.form ["password"] and request.form["month"] and request.form["day"] and \
 		request.form["year"] and request.form["gender"]:
-			ganti = User.objects(email=get_user)
-			for ganti in ganti:
-				ganti.fullname = request.form ["fullname"]
-				ganti.email = request.form ["email"]
-				ganti.password = request.form ["password"]
-				ganti.gender = request.form["gender"]
-				ganti.birthday=date(int(request.form["year"]), int(request.form["month"]),int(request.form["day"]))
-				session.pop("user", None)				
-				session["user"] = request.form["email"]
-				ganti.save()
+			try:
+				get_db = User.objects.get(username=get_user)
+				get_db.fullname = request.form ["fullname"]
+				get_db.email = request.form ["email"]
+				get_db.password = request.form["password"]
+				get_db.gender = request.form["gender"]
+				get_db.birthday=date(int(request.form["year"]), int(request.form["month"]),int(request.form["day"]))
+				get_db.save()
 				print "sukses ganti %s" % (request.form ["fullname"])
 				return redirect("/admin/setting-account")
-				
-				
-	
+			except NotUniqueError:
+				return "Maaf %s sudah digunakan oleh orang lain" % (request.form ["email"])	
 	return render_template("admin/user-setting-account.html", user=user)
 	
 @elearning.route("/admin/setting-profiles", methods=["GET", "POST"])	
 def setting_profiles():
 	if "user" in session:
 		get_user = session.get("user", None)
-		user = User.objects(email=get_user)
-		for check in user:
-			data = Profile(author=check._id)
+		user = User.objects.get(username=get_user)
+		profile = Profile.objects.get(author=user)
 	else:
 		return redirect(url_for('index'))
 		
 	if request.method == "POST":
 		if request.form["alamat"] and request.form["phone"] and request.form["website"]:
-			return "ok"		
-	return render_template("admin/user-setting-profile.html", user=user, data=data)
+			profile.alamat = request.form["alamat"]
+			profile.phone = request.form["phone"]
+			profile.website = request.form["website"]
+			profile.save()
+		
+		if request.files["Image-Profile"]:
+			img = request.files["Image-Profile"]
+			if imghdr.what(request.files["Image-Profile"]) == None:
+				return "Please Upload just Image Extension"
+			
+			try:
+				os.remove("/home/fird0s/e-learning/static/uploads/photo_profile/%s" % (profile.profile_images_url)) 		
+			except OSError:
+				pass	
+			
+			
+			rand = [random.choice(string.letters+string.digits) for x in xrange(35)]
+			rand = "".join(rand)							
+			
+			request.files["Image-Profile"].save("/home/fird0s/e-learning/static/uploads/photo_profile/%s" % (rand) )
+			profile.profile_images_url = rand
+			profile.save()
+			
+			if os.stat("/home/fird0s/e-learning/static/uploads/photo_profile/"+profile.profile_images_url).st_size > 7641998:
+				try:
+					os.remove("/home/fird0s/e-learning/static/uploads/photo_profile/%s" % (profile.profile_images_url)) 		
+					profile.profile_images_url = None
+					profile.save()
+					return "Please Upload less than 8 Mb"
+				except OSError:
+					return "ok"
+			#compress jpg
+			
+			
+		
+	return render_template("admin/user-setting-profile.html", user=user, profile=profile)
+
+@elearning.route("/admin/setting-jurnal", methods=["GET", "POST"])
+def setting_jurnal():
+	if "user" in session:
+		get_user = session.get("user", None)
+		user = User.objects(email=get_user)
+	else:
+		return redirect(url_for('index'))
+	dbref= User.objects.get(email=get_user)
+	dbprofile = Profile.objects.get(author=dbref)
+	
+	if request.method == "POST":
+		if request.form["password"]:
+			dbprofile.password_jurnal = request.form["password"]
+			dbprofile.save()		
+	return render_template("/admin/user-setting-journal.html", dbprofile=dbprofile)
+
+
+@elearning.route("/admin/tambah-jurnal", methods=["GET", "POST"])
+def tambah_jurnal():
+	if "user" in session:
+		get_user = session.get("user", None)
+		user = User.objects(email=get_user)
+	else:
+		return redirect(url_for('index'))
+	return render_template("/admin/user-tambah-jurnal.html", user=user)
 
 @elearning.route("/admin/logout")
 def admin_logout():	
 	session.pop("user", None)				
 	return redirect(url_for('index'))
+	
 	
 @elearning.route('/user/<email>')
 def user(email):

@@ -17,7 +17,7 @@ li {font-family: 'TitilliumWeb-ExtraLight';	}
 
 .menu li a {text-decoration: none; color: white;  font-size: 14px; text-transform: uppercase; font-weight: bold;}
 
-#header-bg {width: 1024; height: 535px; background: gray; background-image:url('../images/bg1.jpeg'); background-size: 1400  1120px; background-position:center; background-attachment:fixed;}
+#header-bg {width: 1024; height: 535px; background: gray; background-image:url('../images/header-bg.jpg'); background-size: 1400  1120px; background-position:center; background-attachment:fixed;}
 
 #search-form-tengah {margin-top: -34px;padding: 10px; background: #FFFFFF; width: 960px; height: 65px;border-radius: 5px; 
 	margin-bottom: 20px; box-shadow: 0 2px 2px rgba(0,0,0,0.15);}
@@ -134,9 +134,24 @@ li {font-family: 'TitilliumWeb-ExtraLight';	}
    -ms-transition: all 0.10s linear;
    transition: all 0.10s linear;}
    
-.quotes {margin-top: 400px; text-align: center; }
+.quotes {margin-top: 130px; text-align: center; }
  
-.quotes h1 {font-size: 23px; font-style:italic; color: white;}
+.quotes h1 {font-size: 38px; /*font-style:italic;*/ color: white; font-weight: 300; font-family: 'TitilliumWeb-ExtraLight'; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);}
+
+.quotes p {-webkit-font-smoothing: antialiased;
+-webkit-animation-delay: 0.6s;
+-moz-animation-delay: 0.6s;
+-o-animation-delay: 0.6s;
+-ms-animation-delay: 0.6s;
+animation-delay: 0.6s;
+margin: 0 auto;
+margin-top: 25px;
+text-align: center;
+color: #fff;
+font-weight: 400;
+font-size: 17px;
+text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+width: 50%;}
 
 .articles-thumbnail li {display: block; width: 30%; height: 140px; float: left; margin-top: 20px; margin: 10px; }
 
@@ -160,8 +175,6 @@ li {font-family: 'TitilliumWeb-ExtraLight';	}
 .latest-articles-kanan {float: left; width: 242px;}
 
 .latest-articles-kanan .articles-kanan-judul {margin-left: 8px; font-size: 16px; line-height: 17px; font-weight: bolder !important;  margin-top: 3px; width: 100%; padding-right: 3px;}
-
-.articles-kanan-judul:visited  {color: blue;}
 
 .by { margin-left: 7px;}
 
@@ -195,3 +208,4 @@ transition: all .3s ease-out;}
 
 .contributor-kanan .contributor-nama {font-size: 18px; font-weight: bold;}
 
+.register {}

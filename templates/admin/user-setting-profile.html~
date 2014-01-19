@@ -33,16 +33,16 @@ body {
               <ul class="dropdown-menu">
                 <li ><a  href="#">Semua Journal </a></li>
                 <li ><a  href="#">Tambah Journal</a></li>
-                <li ><a  href="#">Setting Journal</a></li>
+                <li ><a  href="{{ url_for('setting_jurnal') }}">Setting Journal</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">            
             <li class="dropdown">
-              <a href="{{ url_for('admin')}}" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ url_for('static', filename='images/111-user.png')}}"></img> {% for user in user %} {{ user.fullname }} {%endfor%}<b class="caret"></b></a>
+              <a href="{{ url_for('admin')}}" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ url_for('static', filename='images/111-user.png')}}"></img>  {{ user.fullname }} <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="{{ url_for('setting_account')}}">Setting Account</a></li>
-                <li><a href="#">Setting Profile</a></li>
+                <li><a href="{{ url_for('setting_profiles')}}">Setting Profile</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
                <!-- <li class="dropdown-header">Nav header</li>
@@ -60,7 +60,6 @@ body {
 <div class="container">
     <div class="navbar">
     	<div class="navbar-inner">
-    		{% for user in user %}
     		<ul class="breadcrumb">
     	                                    <i class="icon-chevron-left hide-sidebar"><a href="#" title="Hide Sidebar" rel="tooltip">&nbsp;</a></i>
     	                                    <i class="icon-chevron-right show-sidebar" style="display:none;"><a href="#" title="Show Sidebar" rel="tooltip">&nbsp;</a></i>
@@ -72,26 +71,45 @@ body {
     	                                    </li>
     	                                    <li class="active">Setting Profile</li>
     	         </ul>
-    	         {% endfor %}                           
     	</div>
 </div>
 </div>
 
 <div class="container">
-                  <form method="POST" action="{{ url_for('setting_profiles') }}">      
+                  <form method="POST" action="{{ url_for('setting_profiles') }}" enctype="multipart/form-data">      
+                        <dl class="dl-horizontal">
+                          <dt><u>Photo Profile</u></dt>
+                         
+                         {% if profile.profile_images_url == None %}
+                          
+                         <dd><img src="{{ url_for('static', filename='images/no-images.jpg')}}"  style="width: 150px; height: 150px;" class="img-circle">
+                         <br><br>
+                          
+                          {% else %}
+                          <dd><img src="{{ url_for('static', filename='uploads/photo_profile/')}}{{ profile.profile_images_url}}"  style="width: 150px; height: 150px;" class="img-circle">
+                          <br><br>
+                          
+                          {% endif %}
+                          
+                          
+                          <button onclick="document.getElementById('fileID').click(); return false;" class="btn">Upload New Photo</button>
+                          <input type="file" name="Image-Profile"  style="visibility: hidden;" />
+                          </dd>
+                        </dl>
+                        
                         <dl class="dl-horizontal">
                           <dt><u>Alamat</u></dt>
-                          <dd><input type="text" name="alamat" class="form-control" value="{{ data.alamat }}" required></dd>
+                          <dd><input type="text" name="alamat" class="form-control" value="{{ profile.alamat }}" ></dd>
                         </dl>
                         
                         <dl class="dl-horizontal">
                           <dt><u>Phone Number</u></dt>
-                          <dd><input type="integer" name="phone" class="form-control" value="{{ data.phone }}" required> </dd>
+                          <dd><input type="integer" name="phone" class="form-control" value="{{ profile.phone }}" > </dd>
                         </dl>
                         
                         <dl class="dl-horizontal">
                           <dt><u>Website / Blog</u></dt>
-                          <dd><input type="URL" class="form-control" name="website" value="{{ data.website }}" required> </dd>
+                          <dd><input type="text" class="form-control" name="website" value="{{ profile.website }}" > </dd>
                         </dl>
 
                         <dl class="dl-horizontal">

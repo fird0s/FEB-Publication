@@ -103,7 +103,7 @@ legend{
                   <div class="panel-footer text-info">
                        	Have Account? <a href="/login">Login here</a>
                     </div>    <br>
-                  <input type="text" name="username" class="form-control input-lg" placeholder="Full Name"  />  
+                  <input type="text" name="username" class="form-control input-lg" placeholder="Username"  />  
             	  <input type="text" name="fullname" class="form-control input-lg" placeholder="Full Name"  />
                   <input type="email" name="email" class="form-control input-lg" placeholder="Your Email"  />
                   <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  />

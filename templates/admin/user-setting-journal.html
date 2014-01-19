@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 	<title>Admin</title>
-	<link rel="stylesheet" type="text/css"href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">	
 </head>
 <style>
 body {
@@ -98,8 +98,7 @@ legend{
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">BERANDA</a></li>
-            <li><a href="#">PROFIL KU</a></li>
+            <li><a href="{{ url_for('admin')}}">BERANDA</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">JOURNAL<b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -115,10 +114,10 @@ legend{
           </ul>
           <ul class="nav navbar-nav navbar-right">            
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="../images/111-user.png"></img> Muhammad Firdaus <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ url_for('static', filename='images/111-user.png')}}"></img></img> Muhammad Firdaus <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Setting Account</a></li>
-                <li><a href="#">Setting Profile</a></li>
+                <li><a href="{{ url_for('setting_account')}}">Setting Account</a></li>
+                <li><a href="{{ url_for('setting_profiles')}}">Setting Profile</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Logout</a></li>
                <!-- <li class="dropdown-header">Nav header</li>
@@ -130,13 +129,15 @@ legend{
         </div><!--/.nav-collapse -->
       </div>
 
+	
       <!-- Main component for a primary marketing message or call to action -->
       <div class="container">
         <div class="col-md-9 col-md-offset-1">
-            <form action="r" method="post" accept-charset="utf-8" class="form" role="form">   <legend>Setting Journal</legend>
-                    
-                    <input type="text" name="email" value="" class="form-control input-lg" placeholder="Password Journal"  />
-                    
+            <form action="{{ url_for('setting_jurnal') }}" method="POST" accept-charset="utf-8" class="form"> 
+              <legend>Setting Journal</legend>
+                    <input type="password" name="password" id="txtPassword" value="{{ dbprofile.password_jurnal }}" class="form-control input-lg" placeholder="Password Journal"  />
+                    <label><input type="checkbox"/> Show Password</input></label><br><br>
+
                     <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">
                         Change Password </button>
             </form>          
@@ -145,8 +146,8 @@ legend{
 
     </div> <!-- /container -->
 	
-	<script src="../js/jquery-1.10.2.min.js"></script>
- 	<script src="../js/bootstrap.min.js"></script>
+	<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
+ 	<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
  
 </body>
 </html>

@@ -10,6 +10,23 @@ body {
   padding-bottom: 20px;
 }
 
+#footer {
+        background-color: #f5f5f5;
+        text-align:center;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+      
+      
+
 .navbar {
   margin-bottom: 10px;
   
@@ -48,7 +65,7 @@ body { padding-top:10px; }
               <ul class="dropdown-menu">
                 <li ><a  href="#">Semua Journal </a></li>
                 <li ><a  href="#">Tambah Journal</a></li>
-                <li ><a  href="#">Setting Journal</a></li>
+                <li ><a  href="{{ url_for('setting_jurnal') }}">Setting Journal</a></li>
               </ul>
             </li>
           </ul>
@@ -58,9 +75,9 @@ body { padding-top:10px; }
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ url_for('static', filename='images/111-user.png')}}"></img> {{ user.fullname }} <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="{{ url_for('setting_account') }}">Setting Account</a></li>
-                <li><a href="#">Setting Profile</a></li>
+                <li><a href="{{ url_for('setting_profiles') }}">Setting Profile</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
                <!-- <li class="dropdown-header">Nav header</li>
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>-->
@@ -212,8 +229,14 @@ body { padding-top:10px; }
         </div>
     </div>
 </div>
-	<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
- 	<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+	
    {% endfor %} 
+<div id="footer">
+      <div class="container"><br>
+        <p class="muted credit">Full Developed by <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> | &copy; Copyright Fekon Unsyiah 2014 - 2018 </p>
+      </div>
+</div>  
+<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script> 
 </body>
 </html>

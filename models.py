@@ -1,5 +1,5 @@
 from mongoengine import *
-from mongoengine.errors import ValidationError
+from mongoengine.errors import ValidationError, NotUniqueError
 
 connect('e-learning') #connect ke databases
 import datetime
@@ -22,11 +22,12 @@ class User(Document):
 class Profile(Document):
 	author = ReferenceField(User)
 	alamat = StringField(max_length=80)
-	phone = IntField()
+	phone = StringField(max_length=20)
 	website = StringField(max_length=80)
 	date_added = DateTimeField()
 	cv_url = StringField()
 	profile_images_url = StringField(max_length=300)	
+	password_jurnal = StringField(max_length=100)
 	meta = {'allow_inheritance': True}
 	
 

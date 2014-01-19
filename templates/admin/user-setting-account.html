@@ -86,7 +86,6 @@ legend{
 }
 </style>
  <body>
-	 {% for user in user %}
    <div class="container">
       <!-- Static navbar -->
       <div class="navbar navbar-default" role="navigation">
@@ -107,7 +106,7 @@ legend{
               <ul class="dropdown-menu">
                 <li ><a  href="#">Semua Journal </a></li>
                 <li ><a  href="#">Tambah Journal</a></li>
-                <li ><a  href="#">Setting Journal</a></li>
+                <li ><a  href="{{ url_for('setting_jurnal') }}">Setting Journal</a></li>
               </ul>
             </li>
           </ul>
@@ -317,7 +316,6 @@ legend{
                     
                     <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">
                         Change My Account</button>
-                {% endfor %}        
             </form>          
           </div>
 </div>    

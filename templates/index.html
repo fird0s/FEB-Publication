@@ -6,9 +6,40 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/960_24_col_rtl.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+<style>
+ #footer {
+        background-color: #f5f5f5;
+        text-align:center;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
+
+      /* Custom page CSS
+      -------------------------------------------------- */
+      /* Not required for template or sticky footer method. */
+
+      .container {
+        width: auto;
+        max-width: 680px;
+      }
+      .container .credit {
+        margin: 20px 0;
+      }
+</style>	
 	
 </head>
 <body>
+<a href="https://github.com"><img style="position: fixed; top: 0px; left: 10; border: 0; margin-left: 20px; " src="{{ url_for('static', filename='images/beta-ribbon.png')}}" alt="Testing Mode"></img></a>
 <div id="header">
 	<div class="container_24">
 		<div class="grid_22">
@@ -16,16 +47,42 @@
 				<li><a href="#">Beranda</a></li>
 				<li><a href="#">Updates</a></li>
 				<li><a href="#">Contributor</a></li>
-				<li><a href="#">About</a></li>
+				<li><a href="{{ url_for('about') }}">About</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
 
+
+
 <div id="header-bg">
 	<div class="container_24 ">
 		<div class="quotes">
-			<h1></h1>
+			<h1>The best interfaces for your e-learning website apps.</h1>
+			<p>Using simple HTML markup, get a complete existing website with great design up and running in no time.</p><br><br>
+			<button type="button" class="btn btn-default btn-lg" style="-webkit-font-smoothing: antialiased;
+				display: inline-block;
+				vertical-align: middle;
+				zoom: 1;
+				color: #fff;
+				padding: 12px 31px;
+				border: 2px solid #fff;
+				border-radius: 4px;
+				font-size: 16px;
+				font-weight: 400;
+				background: rgba(0, 0, 0, 0.15);
+				text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+				-webkit-transition: all 0.2s linear;
+				-moz-transition: all 0.2s linear;
+				-ms-transition: all 0.2s linear;
+				-o-transition: all 0.2s linear;
+				transition: all 0.2s linear;
+				margin-right: 40px;
+				"
+				
+			> See the tour </button>
+			
+			<a class="btn btn-primary btn-lg" href="{{ url_for('register') }}">Sing up here</a>
 		</div>
 	</div>
 </div>
@@ -85,9 +142,11 @@
 	</div>
 	<br>
 </div>
-
-	
-<hr style="margin-top: 45px;position: relative;display: block;border-top: 1px solid #C5C5C5;"></hr>
+<div id="footer">
+      <div class="container">
+        <p class="muted credit">Full Developed by <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> | &copy; Copyright fe.unsyiah.ac.id 2014  </p>
+      </div>
+</div>
 
 </body>
 </html>

@@ -7,6 +7,8 @@ import random
 import string
 import os
 from PIL import Image
+from time import gmtime, strftime
+
 
 #Flask library
 from flask import *
@@ -22,7 +24,9 @@ def index():
 
 @elearning.route('/contributor')
 def contributor():
-	return render_template("contributor.html")
+	get_db_user = User.objects
+	get_db_profile = Profile.objects
+	return render_template("contributor.html", get_db_user=get_db_user, get_db_profile=get_db_profile)
 	
 @elearning.route('/register', methods=["GET", "POST"])
 def register():
@@ -35,6 +39,12 @@ def register():
 				return "Your Password Does Not Match"
 			
 			#save to database
+			
+			if len(request.form["username"]) < 7:
+				return "please fill username > 8 character"
+			
+			if len(request.form["password"]) < 7:		
+				return "please fill your password > 8 character"
 			try:
 				user = User(_id = str(ObjectId()), username=request.form["username"], fullname=request.form["fullname"], email=request.form["email"], \
 				password=request.form["password"], birthday=date(int(request.form["birth-year"]), int(request.form["birth-month"]), \
@@ -42,7 +52,7 @@ def register():
 				
 				user.save()
 				
-				profile = Profile(author=user, alamat="None", phone="0852", website="www.fe.unsyiah.ac.id", date_added=datetime.datetime.now())
+				profile = Profile(author=user, website="www.fe.unsyiah.ac.id", date_added=datetime.datetime.now())
 				profile.save()
 				
 				return "Thanks %s for register, please  <a href='/login'>login here</a>" % (request.form["fullname"])			
@@ -64,10 +74,15 @@ def login():
 		return redirect(url_for('admin'))
 	if request.method == "POST":
 		if request.form["email"] and request.form["password"]:
-			get_db = User.objects.get(email=request.form["email"])
-			if get_db.password == request.form["password"]:
-				session["user"] = get_db.username
-				return redirect(url_for('admin'))
+			try:
+				get_db = User.objects.get(email=request.form["email"])
+				if get_db.password == request.form["password"]:
+					session["user"] = get_db.username
+					return redirect(url_for('admin'))
+				else:
+					return "Maaf Password/Email anda salah"	
+			except DoesNotExist:	
+				return "Maaf Email anda belum terdaftar"
 	return render_template("login.html")
 
 @elearning.route('/admin/')	
@@ -133,7 +148,7 @@ def setting_profiles():
 				pass	
 			
 			
-			rand = [random.choice(string.letters+string.digits) for x in xrange(35)]
+			rand = [random.choice(string.letters+string.digits) for x in xrange(25)]
 			rand = "".join(rand)							
 			
 			request.files["Image-Profile"].save("/home/fird0s/e-learning/static/uploads/photo_profile/%s" % (rand) )
@@ -149,6 +164,8 @@ def setting_profiles():
 				except OSError:
 					return "ok"
 			#compress jpg
+			
+			
 		
 	return render_template("admin/user-setting-profile.html", user=user, profile=profile)
 
@@ -156,27 +173,82 @@ def setting_profiles():
 def setting_jurnal():
 	if "user" in session:
 		get_user = session.get("user", None)
-		user = User.objects(email=get_user)
+		user = User.objects.get(username=get_user)
 	else:
 		return redirect(url_for('index'))
-	dbref= User.objects.get(email=get_user)
-	dbprofile = Profile.objects.get(author=dbref)
-	
+	get_db = Profile.objects.get(author=user)	
 	if request.method == "POST":
 		if request.form["password"]:
-			dbprofile.password_jurnal = request.form["password"]
-			dbprofile.save()		
-	return render_template("/admin/user-setting-journal.html", dbprofile=dbprofile)
+			
+			get_db.password_jurnal = request.form["password"]
+			get_db.save()		
+	return render_template("/admin/user-setting-journal.html", user=get_db, nama=user)
 
 
 @elearning.route("/admin/tambah-jurnal", methods=["GET", "POST"])
 def tambah_jurnal():
 	if "user" in session:
 		get_user = session.get("user", None)
-		user = User.objects(email=get_user)
+		user = User.objects.get(username=get_user)
 	else:
 		return redirect(url_for('index'))
-	return render_template("/admin/user-tambah-jurnal.html", user=user)
+	get_all_cat = Kategori.objects
+	
+	if request.method == "POST":
+		if request.form["jurnal-category"] == "Economic":
+			return "Maaf Anda Belum Memilih Kategori"		
+		if not request.files["jurnal-files"]:	
+			return "Maaf anda belum memilih jurnal untuk diupload"
+		
+		if request.form["jurnal-category"] and request.form["jurnal-name"] and request.form["jurnal-summary"]:
+			get_db = Jurnal(author=user, jurnal_name=request.form["jurnal-name"], date_added=datetime.datetime.now(), kategori=request.form["jurnal-category"], summary=request.form["jurnal-summary"])
+			get_db.save()
+		
+		rand = [random.choice(string.letters+string.digits) for x in xrange(10)]
+		rand = "".join(rand)
+		
+		if request.files["jurnal-files"]:
+			try:
+				os.makedirs("/home/fird0s/e-learning/static/uploads/jurnal/"+get_user)
+				namefile = request.files["jurnal-files"].filename
+				namefile = namefile.replace(" ", "-") + strftime("#%a%d%b%H:%M:%S", gmtime())
+				request.files["jurnal-files"].save("/home/fird0s/e-learning/static/uploads/jurnal/"+get_user+"/"+namefile)
+				get_db.jurnal_location = namefile
+				get_db.save()
+				return "thanks for upload new jurnal, see your jurnal <a href='%s'>here</a>" % ( url_for('admin') )
+			except OSError:
+				namefile = request.files["jurnal-files"].filename
+				namefile = namefile.replace(" ", "-") + strftime("#%a%d%b%H:%M:%S", gmtime())
+				request.files["jurnal-files"].save("/home/fird0s/e-learning/static/uploads/jurnal/"+get_user+"/"+namefile)
+				get_db.jurnal_location = namefile
+				get_db.save()
+				return "thanks for upload new jurnal, see your jurnal <a href='%s'>here</a>" % ( url_for('admin') )
+					
+				
+	return render_template("/admin/user-tambah-jurnal.html", user=user, get_all_cat=get_all_cat)
+
+@elearning.route('/admin/edit_jurnal/<route>', methods=["GET", "POST"])
+def edit_jurnal(route):
+	if "user" in session:
+		get_user = session.get("user", None)
+		user = User.objects.get(username=get_user)
+	else:
+		return redirect(url_for('index'))
+	get_all_cat = Kategori.objects
+	get_db = Jurnal.objects.get(pk = ObjectId(route))
+	get_userr = User.objects.get(username = get_user)
+	if get_user != get_userr.username:
+		return "You have not permission to edit this"
+	
+	if request.method == "POST":
+		if request.form["jurnal-name"] and request.form["jurnal-category"] and request.form["jurnal-summary"]:
+			pass
+				
+	return render_template("admin/user-edit-jurnal.html", user=user, get_db=get_db, get_all_cat=get_all_cat)
+
+@elearning.route("/view/jurnal")
+def view_jurnal():
+	return "ok"
 
 @elearning.route("/admin/logout")
 def admin_logout():	

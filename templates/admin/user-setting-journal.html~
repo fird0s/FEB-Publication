@@ -99,12 +99,12 @@ legend{
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="{{ url_for('admin')}}">BERANDA</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">JOURNAL<b class="caret"></b></a>
+            <li class="dropdown active">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">JURNAL<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li ><a  href="#">Semua Journal </a></li>
-                <li ><a  href="#">Setting Journal</a></li>
-                <li ><a  href="#">Tambah Journal</a></li>
+                <li><a  href="#">Semua Jurnal </a></li>
+                <li class="active"><a  href="#">Setting Jurnal</a></li>
+                <li><a  href="{{ url_for('tambah_jurnal')}}">Tambah Jurnal</a></li>
                 
                <!-- <li class="dropdown-header">Nav header</li>
                 <li><a href="#">Separated link</a></li>
@@ -114,7 +114,7 @@ legend{
           </ul>
           <ul class="nav navbar-nav navbar-right">            
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ url_for('static', filename='images/111-user.png')}}"></img></img> Muhammad Firdaus <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ url_for('static', filename='images/111-user.png')}}"></img></img> {{ nama.fullname }} <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="{{ url_for('setting_account')}}">Setting Account</a></li>
                 <li><a href="{{ url_for('setting_profiles')}}">Setting Profile</a></li>
@@ -129,14 +129,27 @@ legend{
         </div><!--/.nav-collapse -->
       </div>
 
+      <div class="navbar-inner">
+    		<ul class="breadcrumb">
+    	                                    <i class="icon-chevron-left hide-sidebar"><a href="#" title="Hide Sidebar" rel="tooltip">&nbsp;</a></i>
+    	                                    <i class="icon-chevron-right show-sidebar" style="display:none;"><a href="#" title="Show Sidebar" rel="tooltip">&nbsp;</a></i>
+    	                                    <li>
+    	                                        <a href="#">{{ nama.fullname }}</a> 
+    	                                    </li>
+    	                                    <li>
+    	                                        <a href="#">Account</a>
+    	                                    </li>
+    	                                    <li class="active">Setting Account</li>
+    	         </ul>
+    	</div>
 	
       <!-- Main component for a primary marketing message or call to action -->
       <div class="container">
         <div class="col-md-9 col-md-offset-1">
             <form action="{{ url_for('setting_jurnal') }}" method="POST" accept-charset="utf-8" class="form"> 
-              <legend>Setting Journal</legend>
-                    <input type="password" name="password" id="txtPassword" value="{{ dbprofile.password_jurnal }}" class="form-control input-lg" placeholder="Password Journal"  />
-                    <label><input type="checkbox"/> Show Password</input></label><br>
+              <legend>Setting Jurnal</legend>
+                    <label>Password Jurnal : </label>
+                    <input type="password" name="password" id="txtPassword" value="{{ user.password_jurnal }}" class="form-control input-lg" placeholder="Password Journal"  />
 
                     <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">
                         Change Password </button>

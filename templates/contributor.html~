@@ -36,6 +36,22 @@
 		<input type="submit" id="search-button" value="Search">
 	</form>
 </div>
+
+{#
+
+{% for x in get_db_user %}
+
+	{% for y in get_db_profile(author=x) %}
+		
+		<p> {{ x.username }} </p>
+		<b> <img src="{{ url_for('static', filename='uploads/photo_profile')}}/{{ y.profile_images_url }}"></img> </b>
+		
+	
+	{% endfor %}
+	
+{% endfor %}
+
+#}
     
 
 <div id="latest-articles" >

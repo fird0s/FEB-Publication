@@ -35,7 +35,7 @@ body {
               <ul class="dropdown-menu">
                 <li><a  href="#">Semua Jurnal </a></li>
                 <li><a  href="{{ url_for('setting_jurnal')}}">Setting Jurnal</a></li>
-                <li class="active"><a  href="{{ url_for('tambah_jurnal')}}">Tambah Jurnal</a></li>
+                <li><a  href="{{ url_for('tambah_jurnal')}}">Tambah Jurnal</a></li>
               </ul>
             </li>
           </ul>
@@ -74,7 +74,13 @@ body {
     	                                    <li>
     	                                        <a href="#">Jurnal</a>
     	                                    </li>
-    	                                    <li class="active">Tambah Jurnal</li>
+    	                                    <li>
+    	                                        <a href="#">Edit Jurnal</a>
+    	                                    </li>
+    	                                    <li>
+    	                                        {{ get_db.jurnal_name }}
+    	                                    </li>
+    	                                    
     	         </ul>
     	</div>
 </div>
@@ -83,16 +89,17 @@ body {
 
 
 <div class="container">
-                   <form action="{{ url_for('tambah_jurnal')}}" method="POST" enctype="multipart/form-data">      
+                   <form action="{{ url_for('edit_jurnal', route=get_db.pk)}}" method="POST" enctype="multipart/form-data">      
                         <dl class="dl-horizontal">
                           <dt><u>Nama Jurnal </u></dt>
-                          <dd><input type="text" name="jurnal-name" class="form-control" required></input> </dd>
+                          <dd><input type="text" name="jurnal-name" class="form-control" value="{{ get_db.jurnal_name }}" required></input> </dd>
+                          
                         </dl>
 
                         <dl class="dl-horizontal">
                           <dt><u>Kategori </u></dt>
                           <dd><select name="jurnal-category" class="form-control">
-                              <option value="{{ get_all_cat.nama }}">{{ get_all_cat.nama }}</option>
+                          	<option value="{{ get_db.kategori }}">{{ get_db.kategori }}</option>
                                {% for get_all_cat in get_all_cat %}<option value="{{ get_all_cat.nama }}">{{ get_all_cat.nama }}</option>
                                {% endfor %}
                               </select> </dd>
@@ -100,12 +107,15 @@ body {
 
                         <dl class="dl-horizontal">
                           <dt><u>Upload Jurnal</u></dt>
-                          <dd><input type="file" name="jurnal-files" ></input> </dd>
+                          <dd>
+                          	<input type="file" id="files" class="hidden"/>
+				<label for="files">Change Jurnal File</label>
+                          </dd>
                         </dl>
                        
                         <dl class="dl-horizontal">
                           <dt><u>Summary/Ringkasan</u></dt>
-                          <dd><textarea class="form-control" name="jurnal-summary" rows="20" required></textarea> </dd>
+                          <dd><textarea class="form-control" name="jurnal-summary" rows="20" required>{{ get_db.summary }}</textarea> </dd>
                         </dl>
 
                         <dl class="dl-horizontal">

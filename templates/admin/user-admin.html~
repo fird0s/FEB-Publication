@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="id">
 <head>
-	<title>Admin</title>
+	<title>{{ user.fullname }}Admin</title>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">	
+   	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font/font-awesome.min.css')}}"> 
 </head>
 <style>
 body {
@@ -25,27 +26,23 @@ body {
         }
       }
       
-      
 
 .navbar {
-  margin-bottom: 10px;
-  
-}
-
-body { padding-top:10px; }
-.widget .panel-body { padding:0px; }
-.widget .list-group { margin-bottom: 0; }
-.widget .panel-title { display:inline }
-.widget .label-info { float: right; }
-.widget li.list-group-item {;border-radius: 0;border: 1;border-top: 1px solid #ddd; width: 50%; float: left; }
-.widget li.list-group-item a {font-size: 16px; }
-.widget li.list-group-item:hover { background-color: rgba(86,61,124,.1); }
-.widget .mic-info { color: #666666;font-size: 13px; }
-.widget .action { margin-top:5px; }
-.widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
-
+  margin-bottom: 10px; 
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
+    
 </style>
-<body>{% for user in user %}
+<body>
 <div class="container">
       <!-- Static navbar -->
       <div class="navbar navbar-default" role="navigation">
@@ -59,12 +56,12 @@ body { padding-top:10px; }
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="{{ url_for('admin')}}">BERANDA</a></li>
+            <li class="active"><a href="{{ url_for('admin')}}">BERANDA</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">JURNAL<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li ><a  href="#">Semua Journal </a></li>
-                <li ><a  href="#">Tambah Journal</a></li>
+                <li ><a  href="{{ url_for('tambah_jurnal') }}">Tambah Journal</a></li>
                 <li ><a  href="{{ url_for('setting_jurnal') }}">Setting Journal</a></li>
               </ul>
             </li>
@@ -96,7 +93,7 @@ body { padding-top:10px; }
 <div class="navbar">
 	<div class="navbar-inner">
 		<ul class="breadcrumb">
-	                                    <i class="icon-chevron-left hide-sidebar"><a href="#" title="Hide Sidebar" rel="tooltip">&nbsp;</a></i>
+	                                    
 	                                    <i class="icon-chevron-right show-sidebar" style="display:none;"><a href="#" title="Show Sidebar" rel="tooltip">&nbsp;</a></i>
 	                                    <li>
 	                                        <a href="/user/{{ user.id }}">{{ user.fullname }}</a> 
@@ -110,127 +107,38 @@ body { padding-top:10px; }
 </div>
 </div>
 
+
 <div class="container">
-    <div class="row">
-        <div class="panel panel-default widget">
-            <div class="panel-heading">
-                <span><img src="{{ url_for('static', filename='images/37-suitcase.png')}}"></img></span>
-                <h3 class="panel-title">
-                    Jurnal</h3>
-                <span class="label label-info">
-                    78</span>
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10 col-md-11">
-                                <div>
-                                    <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                        Google Style Login Page Design Using Bootstrap</a>
-                                    <div class="mic-info">
-                                        on: 2, Aug 2013
-                                    </div>
-                                </div>
-                               
-                                <div class="action">
-                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                        <span class="glyphicon glyphicon-ok"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                   <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10 col-md-11">
-                                <div>
-                                    <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                        Google Style Login Page Design Using Bootstrap</a>
-                                    <div class="mic-info">
-                                        on: 2, Aug 2013
-                                    </div>
-                                </div>
-                               
-                                <div class="action">
-                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                        <span class="glyphicon glyphicon-ok"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                   <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10 col-md-11">
-                                <div>
-                                    <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                        Google Style Login Page Design Using Bootstrap</a>
-                                    <div class="mic-info">
-                                        on: 2, Aug 2013
-                                    </div>
-                                </div>
-                               
-                                <div class="action">
-                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                        <span class="glyphicon glyphicon-ok"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10 col-md-11">
-                                <div>
-                                    <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                        Google Style Login Page Design Using Bootstrap</a>
-                                    <div class="mic-info">
-                                        on: 2, Aug 2013
-                                    </div>
-                                </div>
-                               
-                                <div class="action">
-                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                        <span class="glyphicon glyphicon-ok"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                
-            </div>
-        </div>
-    </div>
+    <table class="table table-striped custab">
+    
+    <thead>
+    <a href="{{ url_for('tambah_jurnal') }}" class="btn btn-primary btn-xs pull-left"><b>+</b> Add new jurnal </a>
+    </thead>
+            <tr><br><br>
+            
+                <td>For expanded text on long hover of an abbreviation, include the title attribute with the element sfsd fs.</td>
+                <td class="">
+		        <a class='btn btn-info btn-xs' href="#"><span class="btn-icon icon-edit"></span> Edit</a> 
+		        <a href="#" class="btn btn-primary btn-xs"><span class="btn-icon icon-list"></span> Show ID</a>
+		        <a href="#" class="btn btn-danger btn-xs"><span class="btn-icon icon-remove"></span> Del</a>
+                </td>
+            </tr>
+            
+            <tr>
+            
+               <td>For expanded text on long hover of an abbreviation, include the title attribute with the element sfsd fs.</td>
+                <td class="">
+		        <a class='btn btn-info btn-xs' href="#"><span class="btn-icon icon-edit"></span> Edit</a> 
+		        <a href="#" class="btn btn-primary btn-xs"><span class="btn-icon icon-list"></span> Show ID</a>
+		        <a href="#" class="btn btn-danger btn-xs"><span class="btn-icon icon-remove"></span> Del</a>
+                </td>
+            </tr>
+            
+    </table>
 </div>
+
+
 	
-   {% endfor %} 
 <div id="footer">
       <div class="container"><br>
         <p class="muted credit">Full Developed by <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> | &copy; Copyright Fekon Unsyiah 2014 - 2018 </p>

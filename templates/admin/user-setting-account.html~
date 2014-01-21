@@ -3,6 +3,7 @@
 <head>
 	<title>Admin</title>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">	
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font/font-awesome.min.css')}}"> 
 </head>
 <style>
 body {
@@ -15,7 +16,7 @@ body {
   
 }
 
-.navbar-inner {margin-left: -25px;}
+.navbar-inner {}
 
 #wrap{
 background-image: -ms-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
@@ -86,7 +87,6 @@ legend{
 }
 </style>
  <body>
-	 {% for user in user %}
    <div class="container">
       <!-- Static navbar -->
       <div class="navbar navbar-default" role="navigation">
@@ -106,16 +106,16 @@ legend{
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">JURNAL<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li ><a  href="#">Semua Journal </a></li>
-                <li ><a  href="#">Tambah Journal</a></li>
                 <li ><a  href="{{ url_for('setting_jurnal') }}">Setting Journal</a></li>
+                <li ><a  href="{{ url_for('tambah_jurnal')}}">Tambah Journal</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">            
-            <li class="dropdown">
+            <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ url_for('static', filename='images/111-user.png')}}"></img> {{ user.fullname}} <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Setting Account</a></li>
+                <li class="active" ><a href="#">Setting Account</a></li>
                 <li><a href="{{ url_for('setting_profiles')}}">Setting Profile</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
@@ -129,10 +129,8 @@ legend{
       </div>
 
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="container">
       <div class="navbar-inner">
     		<ul class="breadcrumb">
-    	                                    <i class="icon-chevron-left hide-sidebar"><a href="#" title="Hide Sidebar" rel="tooltip">&nbsp;</a></i>
     	                                    <i class="icon-chevron-right show-sidebar" style="display:none;"><a href="#" title="Show Sidebar" rel="tooltip">&nbsp;</a></i>
     	                                    <li>
     	                                        <a href="#">{{ user.fullname }}</a> 
@@ -141,6 +139,7 @@ legend{
     	                                        <a href="#">Account</a>
     	                                    </li>
     	                                    <li class="active">Setting Account</li>
+    	                                    
     	         </ul>
     	</div>
       
@@ -317,7 +316,6 @@ legend{
                     
                     <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">
                         Change My Account</button>
-                {% endfor %}        
             </form>          
           </div>
 </div>    

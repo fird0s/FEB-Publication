@@ -1,5 +1,5 @@
 from mongoengine import *
-from mongoengine.errors import ValidationError
+from mongoengine.errors import ValidationError, NotUniqueError, DoesNotExist
 
 connect('e-learning') #connect ke databases
 import datetime
@@ -30,7 +30,22 @@ class Profile(Document):
 	password_jurnal = StringField(max_length=100)
 	meta = {'allow_inheritance': True}
 	
+class Kategori(Document):
+	nama = StringField(max_length=50)
+	about_category = StringField()
+	date_added = DateTimeField()
 
+class Jurnal(Document):
+	author = ReferenceField(User)
+	jurnal_name = StringField(max_length=500)
+	jurnal_location = StringField(max_length=100)
+	date_added = DateTimeField()
+	kategori = ReferenceField(Kategori)
+	summary = StringField(max_length=800)
+	
+
+	
+	
 		
 
 

@@ -44,9 +44,9 @@
 	<div class="container_24">
 		<div class="grid_22">
 			<ul class="menu">
-				<li><a href="#">Beranda</a></li>
+				<li><a href="{{ url_for('index')}}">Beranda</a></li>
 				<li><a href="#">Updates</a></li>
-				<li><a href="#">Contributor</a></li>
+				<li><a href="{{ url_for('contributor')}}">Contributor</a></li>
 				<li><a href="{{ url_for('about') }}">About</a></li>
 			</ul>
 		</div>

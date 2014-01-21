@@ -46,7 +46,7 @@
 			<ul class="menu">
 				<li><a href="#">Beranda</a></li>
 				<li><a href="#">Updates</a></li>
-				<li><a href="#">Contributor</a></li>
+				<li><a href="{{ url_for('contributor')}}">Contributor</a></li>
 				<li><a href="{{ url_for('about') }}">About</a></li>
 			</ul>
 		</div>
@@ -82,7 +82,7 @@
 				
 			> See the tour </button>
 			
-			<a class="btn btn-primary btn-lg" href="/register">Sing up here</a>
+			<a class="btn btn-primary btn-lg" href="{{ url_for('register') }}">Sing up here</a>
 		</div>
 	</div>
 </div>

@@ -16,7 +16,7 @@
 <body>
 <div id="header">
 	<div class="container_24">
-		<div class="grid_22">
+		<div class="grid_24">
 			<ul class="menu">
 				<li><a href="{{ url_for('index')}}">Beranda</a></li>
 				<li><a href="#">Updates</a></li>
@@ -32,85 +32,49 @@
     
 <div id="search-form-tengah" class="container_24 push_7 contributor">
 	<form class="search-form-tengah">
-		<input type="text" class="search-form-input" placeholder="Search Contributor">
+		<input type="text" class="search-form-input" placeholder="Search Lecturer/Contributor">
 		<input type="submit" id="search-button" value="Search">
 	</form>
 </div>
 
-{#
 
-{% for x in get_db_user %}
-
-	{% for y in get_db_profile(author=x) %}
-		
-		<p> {{ x.username }} </p>
-		<b> <img src="{{ url_for('static', filename='uploads/photo_profile')}}/{{ y.profile_images_url }}"></img> </b>
-		
-	
-	{% endfor %}
-	
-{% endfor %}
-
-#}
     
 
 <div id="latest-articles" >
 		<p class="head-font"></p>
 		<ul class="contributor">
+		{% for x in get_db_user %}
+		    {% for y in get_db_profile(author=x) %}	
 			<li><a href="#">
+			
+				{% if y.profile_images_url == None %}
 				<span class="contributor-kiri">
-					<img src="{{ url_for('static', filename='images/contoh.png')}}"></img>
+					<img style="width: 75px; height: 75px;" src="{{ url_for('static', filename='images/no-images.jpg')}}"></img>
 											
-					</span>				
+				</span>				
+					
 				</span>
 				
-				<span class="contributor-kanan">
-					<p class="contributor-nama">Muhammad Firdaus</p>				
-					<img src="{{ url_for('static', filename='images/web.gif')}}"> www.firdauskoder.com</img><br>
-					<img src="{{ url_for('static', filename='images/18-envelope.png')}}" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">  
-					 firdauskoder@gmail.com</img><br>
-					<img src="{{ url_for('static', filename='images/glyphicons_069_gift.png')}}" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">   <b>May 27, 1995</b>  </img>
-				</span>
-			</a>	
-			</li>
-			
-			<li><a href="#">
+				{% else %}
+				
 				<span class="contributor-kiri">
-					<img src="{{ url_for('static', filename='images/contoh.png')}}"></img>
+					<img style="width: 75px; height: 75px;" src="{{ url_for('static', filename='uploads/photo_profile')}}/{{ y.profile_images_url }}"></img>
 											
-					</span>				
-				</span>
+				</span>				
+				
+				{% endif %}
 				
 				<span class="contributor-kanan">
-					<p class="contributor-nama">Muhammad Firdaus</p>				
-					<img src="{{ url_for('static', filename='images/web.gif')}}"> www.firdauskoder.com</img><br>
+					<p class="contributor-nama">{{ x.fullname }}</p>				
+					<img src="{{ url_for('static', filename='images/web.gif')}}"> {{ y.website }} </img><br>
 					<img src="{{ url_for('static', filename='images/18-envelope.png')}}" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">  
-					 firdauskoder@gmail.com</img><br>
-					<img src="{{ url_for('static', filename='images/glyphicons_069_gift.png')}}" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">   <b>May 27, 1995</b>  </img>
+					 {{ x.email }}</img><br>
+					<img src="{{ url_for('static', filename='images/glyphicons_069_gift.png')}}" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">   <b>{{ x.birthday }}</b>  </img>
 				</span>
-			</a>	
+			</a>
 			</li>
-			
-			<li><a href="#">
-				<span class="contributor-kiri">
-					<img src="{{ url_for('static', filename='images/contoh.png')}}"></img>
-											
-					</span>				
-				</span>
-				
-				<span class="contributor-kanan">
-					<p class="contributor-nama">Muhammad Firdaus</p>				
-					<img src="{{ url_for('static', filename='images/web.gif')}}"> www.firdauskoder.com</img><br>
-					<img src="{{ url_for('static', filename='images/18-envelope.png')}}" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">  
-					 firdauskoder@gmail.com</img><br>
-					<img src="{{ url_for('static', filename='images/glyphicons_069_gift.png')}}" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">   <b>May 27, 1995</b>  </img>
-				</span>
-			</a>	
-			</li>
-			
-			
-			
-			
+		     {% endfor %}
+		{% endfor %}		
 		</ul>
 </div>    
 	<!--<hr style="margin-top: 45px;position: relative;display: block;border-top: 1px solid #cbcbcb;"></hr>-->

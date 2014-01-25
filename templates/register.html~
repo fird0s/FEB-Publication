@@ -86,10 +86,10 @@ legend{
 	<div class="container_24">
 		<div class="grid_22">
 			<ul class="menu">
-				<li><a href="#">Beranda</a></li>
+				<li><a href="{{ url_for('index')}}">Beranda</a></li>
 				<li><a href="#">Updates</a></li>
-				<li><a href="#">Contributor</a></li>
-				<li><a href="#">About</a></li>
+				<li><a href="{{ url_for('contributor')}}">Contributor</a></li>
+				<li><a href="{{ url_for('about') }}">About</a></li>
 			</ul>
 		</div>
 	</div>
@@ -250,7 +250,7 @@ legend{
                      
                     <label>Gender : </label>                    
                     <label class="radio-inline">
-                        <input type="radio" name="gender" value="M" /> Male
+                        <input type="radio" name="gender" value="M" checked /> Male
                     </label>
                     <label class="radio-inline">
                         <input type="radio" name="gender" value="F" /> Female

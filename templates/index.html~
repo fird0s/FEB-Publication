@@ -39,27 +39,28 @@
 	
 </head>
 <body>
-<a href="https://github.com"><img style="position: fixed; top: 0px; left: 10; border: 0; margin-left: 20px; " src="{{ url_for('static', filename='images/beta-ribbon.png')}}" alt="Testing Mode"></img></a>
+<a href="https://github.com"><img style="position: fixed; top: 0px; left: 10; border: 0; margin-left: 20px; z-index: 2;" title="Versi Percobaan" src="{{ url_for('static', filename='images/beta-ribbon.png')}}" alt="Testing Mode"></img></a>
 <div id="header">
 	<div class="container_24">
-		<div class="grid_22">
+		<div class="grid_24">
 			<ul class="menu">
-				<li><a href="#">Beranda</a></li>
+				<li><a href="{{ url_for('index')}}">Beranda</a></li>
 				<li><a href="#">Updates</a></li>
 				<li><a href="{{ url_for('contributor')}}">Contributor</a></li>
 				<li><a href="{{ url_for('about') }}">About</a></li>
+				<li class="btn btn-default" style="float: right; margin-top: -7px;"><a href="{{ url_for('admin') }}">Halaman Admin</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
 
 
-
 <div id="header-bg">
-	<div class="container_24 ">
+	<div class="container_24">
+	   <div class="grid_24">
 		<div class="quotes">
-			<h1>The best interfaces for your e-learning website apps.</h1>
-			<p>Using simple HTML markup, get a complete existing website with great design up and running in no time.</p><br><br>
+			<h1>Start learning now.</h1>
+			<p>Completely free, forever.</p><br><br>
 			<button type="button" class="btn btn-default btn-lg" style="-webkit-font-smoothing: antialiased;
 				display: inline-block;
 				vertical-align: middle;
@@ -79,61 +80,57 @@
 				transition: all 0.2s linear;
 				margin-right: 40px;
 				"
-				
 			> See the tour </button>
-			
-			<a class="btn btn-primary btn-lg" href="{{ url_for('register') }}">Sing up here</a>
-		</div>
+			<a class="btn btn-primary btn-lg" href="{{ url_for('login') }}">Sing in here</a>
+	  	 </div>	
+	  </div>	 
+		
 	</div>
 </div>
 
 <div id="search-form-tengah" class="container_24 push_7 ">
 	<form class="search-form-tengah">
-		<input type="text" class="search-form-input" placeholder="Search Article">
+		<input type="text" class="search-form-input" placeholder="Mencari Jurnal">
 		<input type="submit" id="search-button" value="Search">
 	</form>
 </div>
 <!--<hr style="padding-top: 15px;margin-top: 15px;position: relative;display: block;border-top: 1px solid #cbcbcb;">-->
 <div class="">
-	<div id="latest-articles" >
-		<p class="head-font">Artikel Terbaru (In Source)</p><!--http://dpaste.com/1540516/-->
+	<div id="latest-articles">
+		<p class="head-font"> NEW JURNAL </p><!--http://dpaste.com/1540516/-->
 		<p style="float: right; margin-top: -50px; margin-right: 20px;" class="btn btn-info" >RSS</p>	
 		<ul class="articles-thumbnail" style="padding-left: 0px;"> 
+		
+		{% for get_user in get_all_user %}	
+			{% for get_jurnal in get_all_jurnal(author=get_user) | reverse  %}
+				{% for get_profile in get_all_profile(author=get_user) %}
 			<li>
+				{% if get_profile.profile_images_url == None %}
+				
 				<a href="#"><span class="latest-articles-kiri">
-					<img src="{{ url_for('static', filename='images/addyosmani.75.png')}}"></img>
+					<img src="{{ url_for('static', filename='images/no-images.jpg')}}"></img>
 				</span>
 				
+				{% else %}
+				
+				<a href="#"><span class="latest-articles-kiri">
+					<img src="{{ url_for('static', filename='uploads/photo_profile')}}/{{ get_profile.profile_images_url }}"></img>
+				</span>
+				
+				
+				
+				{% endif %}
+				
 				<span class="latest-articles-kanan">
-					<p class="articles-kanan-judul">Kesejahteraan Aceh dan UUPA pada Rakyat Aceh dengan Uang yang Besar</p>
-					<a class="by" href="#"> #Accountancy  </a>
+					<p class="articles-kanan-judul" title="{{ get_jurnal.jurnal_name }}">{{ get_jurnal.jurnal_name | title | truncate (80)}}</p>
+					<a class="by" href="#"> #{{ get_jurnal.kategori }}  </a>
 				</span
 				</a>
 			</li>
+				{% endfor %}		
+			{% endfor %}		
+		{% endfor %}	
 			
-			<li>
-				<a href="#"><span class="latest-articles-kiri">
-					<img src="{{ url_for('static', filename='images/addyosmani.75.png')}}"></img>
-				</span>
-				
-				<span class="latest-articles-kanan">
-					<p class="articles-kanan-judul">Kesejahteraan Aceh dan UUPA pada Rakyat Aceh dengan Uang yang Besar</p>
-					<a class="by" href="#"> #Accountancy  </a>
-				</span
-				</a>
-			</li>
-			
-			<li>
-				<a href="#"><span class="latest-articles-kiri">
-					<img src="{{ url_for('static', filename='images/addyosmani.75.png')}}"></img>
-				</span>
-				
-				<span class="latest-articles-kanan">
-					<p class="articles-kanan-judul">Kesejahteraan Aceh dan UUPA pada Rakyat Aceh dengan Uang yang Besar</p>
-					<a class="by" href="#"> #Accountancy  </a>
-				</span
-				</a>
-			</li>
 			
 			
 			
@@ -141,6 +138,9 @@
 		</ul>
 	</div>
 	<br>
+	
+	<br>
+	
 </div>
 <div id="footer">
       <div class="container">

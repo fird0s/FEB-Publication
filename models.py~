@@ -17,6 +17,7 @@ class User(Document):
 	password = StringField(required=True)
 	birthday = DateTimeField(required=True)
 	gender = StringField(max_length=1, choices=GENDER, required=True)
+	emergency_call = StringField(max_length=20)
 	date_joined = DateTimeField()
 
 class Profile(Document):
@@ -40,7 +41,7 @@ class Jurnal(Document):
 	jurnal_name = StringField(max_length=500)
 	jurnal_location = StringField(max_length=100)
 	date_added = DateTimeField()
-	kategori = ReferenceField(Kategori)
+	kategori = StringField(max_length=100)
 	summary = StringField(max_length=800)
 	
 

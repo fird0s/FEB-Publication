@@ -77,8 +77,8 @@ body {
     	                                    <li>
     	                                        <a href="#">Edit Jurnal</a>
     	                                    </li>
-    	                                    <li>
-    	                                        {{ get_db.jurnal_name }}
+    	                                    <li title="{{ get_db.jurnal_name }}">
+    	                                        {{ get_db.jurnal_name | truncate (90)}}
     	                                    </li>
     	                                    
     	         </ul>
@@ -106,10 +106,10 @@ body {
                         </dl>
 
                         <dl class="dl-horizontal">
-                          <dt><u>Upload Jurnal</u></dt>
+                          <dt><u>Ganti Jurnal Lain</u></dt>
                           <dd>
-                          	<input type="file" id="files" class="hidden"/>
-				<label for="files">Change Jurnal File</label>
+                          	<input type="file" id="files" name="jurnal-files"/>
+                          	<button class="btn">{{ get_db.jurnal_location }}</button>
                           </dd>
                         </dl>
                        
@@ -120,7 +120,7 @@ body {
 
                         <dl class="dl-horizontal">
                           <dt></dt>
-                          <dd><button type="submit" class="btn btn-primary">Simpan Jurnal</button></dd>
+                          <dd><button type="submit" class="btn btn-primary">Ganti Jurnal</button></dd>
                         </dl>
 		</form>
 </div>

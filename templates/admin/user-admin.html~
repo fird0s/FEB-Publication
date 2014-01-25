@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="id">
 <head>
-	<title>{{ user.fullname }}Admin</title>
+	<title>{{ user.fullname }} | Admin</title>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">	
    	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font/font-awesome.min.css')}}"> 
 </head>
@@ -41,7 +41,10 @@ body {
     transition: 0.5s;
     }
     
+    
 </style>
+
+
 <body>
 <div class="container">
       <!-- Static navbar -->
@@ -56,7 +59,13 @@ body {
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{{ url_for('admin')}}">BERANDA</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">BERANDA<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li ><a  href="{{ url_for('index') }}">Halaman Website</a></li>
+                <li ><a  href="{{ url_for('admin') }}">Halaman Admin</a></li>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">JURNAL<b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -108,43 +117,85 @@ body {
 </div>
 
 
+
+
 <div class="container">
     <table class="table table-striped custab">
     
     <thead>
-    <a href="{{ url_for('tambah_jurnal') }}" class="btn btn-primary btn-xs pull-left"><b>+</b> Add new jurnal </a>
+    <a href="{{ url_for('tambah_jurnal') }}" class="btn btn-primary btn-xs pull-left new-jurnal"><b>+</b> Add new jurnal </a>
     </thead>
-            <tr><br><br>
-            
-                <td>For expanded text on long hover of an abbreviation, include the title attribute with the element sfsd fs.</td>
-                <td class="">
-		        <a class='btn btn-info btn-xs' href="#"><span class="btn-icon icon-edit"></span> Edit</a> 
-		        <a href="#" class="btn btn-primary btn-xs"><span class="btn-icon icon-list"></span> Show ID</a>
-		        <a href="#" class="btn btn-danger btn-xs"><span class="btn-icon icon-remove"></span> Del</a>
-                </td>
-            </tr>
-            
-            <tr>
-            
-               <td>For expanded text on long hover of an abbreviation, include the title attribute with the element sfsd fs.</td>
-                <td class="">
-		        <a class='btn btn-info btn-xs' href="#"><span class="btn-icon icon-edit"></span> Edit</a> 
-		        <a href="#" class="btn btn-primary btn-xs"><span class="btn-icon icon-list"></span> Show ID</a>
-		        <a href="#" class="btn btn-danger btn-xs"><span class="btn-icon icon-remove"></span> Del</a>
-                </td>
+            <br><br>
+                {% for myjurnal in myjurnal %}
+                    <tr>	
+                	<td title="{{ myjurnal.jurnal_name | title }}">{{ myjurnal.jurnal_name | title | truncate (130) }} </td>
+                	<td>
+				<a href="#" class="btn btn-success btn-xs"><span class="btn-icon icon-list"></span> View</a>
+				<a href="/admin/edit_jurnal/{{myjurnal.pk}}" class='btn btn-info btn-xs' ><span class="btn-icon icon-edit"></span> Edit</a> 
+				<a href="#" class="btn btn-danger btn-xs hapuss"><span class="btn-icon icon-remove"></span> Del</a>
+				<p style="display: none;">{{ myjurnal.pk }}</p>
+	                </td>
+                    </tr>		
+                {% endfor %}
+                
             </tr>
             
     </table>
 </div>
-
-
 	
 <div id="footer">
       <div class="container"><br>
         <p class="muted credit">Full Developed by <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> | &copy; Copyright Fekon Unsyiah 2014 - 2018 </p>
       </div>
 </div>  
+
 <script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
 <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script> 
+
+<script>
+$(document).ready(function(){
+	$(".hapuss").click(function(){
+	        var maop = $(this).parent().prev().text();
+	        var hapus = $(this).next('p').text();
+	        $(".nama_jurnal").html(maop + " ?");
+		$('.table').css('opacity', "0.1");
+		$('.navbar').css('opacity', "0.1");
+		$('.new-jurnal').css('opacity', "0.1");
+		$(".pop-up").css("display", "block");		
+		
+		$(".request_ya").click(function(){
+			window.location.href = "/admin/hapus/jurnal/"+hapus
+		});
+		
+	});	
+});
+
+$(document).ready(function(){
+	$(".tidak").click(function(){
+		$(".pop-up").css("display", "none");
+		$('.table').css('opacity', "10");
+		$('.navbar').css('opacity', "10");
+		$('.new-jurnal').css('opacity', "10");		
+	});
+});
+
+$(document).ready(function(){
+	$(".request_ya").click(function(){
+	});
+});
+
+</script>
+<div class="container" style="position:fixed; top:35%; left: 35%; width: 30%;">
+	<div class="">
+		<div class="modal-content pop-up" style="display:none;">
+			    <div class="modal-body">
+			      <b>Apakah Anda ingin menghapus jurnal </b>
+			      <p class="nama_jurnal"></p> 
+			      <button type="button" class="btn btn-default tidak">Tidak </button>
+			      <button type="button" class="btn btn-primary request_ya">Iya </button>
+			    </div>
+		</div><!-- /.modal-content -->
+	</div>	
+</div>
 </body>
 </html>

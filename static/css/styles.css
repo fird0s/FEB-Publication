@@ -9,16 +9,16 @@
 body {background: #EEEEEE !important;}
 
 
-#header {background: #DA4C2F; width: 100%; height: 40px;}
+#header {width: 100%; height: 40px; background-color: #CECECE; box-shadow: 0px 0px 2px 2px gray;}
 
 li {font-family: 'TitilliumWeb-ExtraLight';	}
 
 .menu {margin-top: 10px;}
 .menu li {display: inline;  margin: 10px;}
 
-.menu li a {text-decoration: none; color: white;  font-size: 14px; text-transform: uppercase; font-weight: bold;}
+.menu li a {text-decoration: none; color: black;  font-size: 14px; text-transform: uppercase; font-weight: bold;}
 
-#header-bg {width: 1024; height: 535px; background: gray; background-image:url('../images/bg1.jpeg'); background-size: 1400  1120px; background-position:center; background-attachment:fixed;}
+#header-bg {width: 1024; height: 535px; background: gray; background-image:url('../images/bg-header.jpg'); background-size: 1400  1120px; background-position:center; background-attachment:fixed;}
 
 #search-form-tengah {margin-top: -34px;padding: 10px; background: #FFFFFF; width: 960px; height: 65px;border-radius: 5px; 
 	margin-bottom: 20px; box-shadow: 0 2px 2px rgba(0,0,0,0.15);}
@@ -51,7 +51,7 @@ li {font-family: 'TitilliumWeb-ExtraLight';	}
 	 -webkit-transform:rotate(360deg); /* Safari and Chrome */
 }	
 	
-#latest-articles {box-shadow: 0 2px 2px rgba(0,0,0,0.15); background: white; border-radius: 4px; width: 1070px; margin: auto; padding-bottom: 20px; }	
+#latest-articles {box-shadow: 0 2px 2px rgba(0,0,0,0.15); background: #F5F5F5; border-radius: 4px; width: 1070px; margin: auto; padding-bottom: 20px; }	
 
 .head-font {font-family: 'TitilliumWeb-ExtraLight'; font-size: 23px; font-weight: 900; padding: 10px; text-decoration: none;}
 
@@ -135,26 +135,17 @@ li {font-family: 'TitilliumWeb-ExtraLight';	}
    -ms-transition: all 0.10s linear;
    transition: all 0.10s linear;}
    
-.quotes {margin-top: 130px; text-align: center; }
+.quotes {margin-top: 130px; text-align: left; }
  
-.quotes h1 {font-size: 38px; /*font-style:italic;*/ color: white; font-weight: 300; font-family: 'TitilliumWeb-ExtraLight'; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);}
+.quotes h1 { font-size: 44px; color: white; text-shadow: 1px 2px 0 #4A4849;}
 
-.quotes p {-webkit-font-smoothing: antialiased;
--webkit-animation-delay: 0.6s;
--moz-animation-delay: 0.6s;
--o-animation-delay: 0.6s;
--ms-animation-delay: 0.6s;
-animation-delay: 0.6s;
-margin: 0 auto;
-margin-top: 25px;
-text-align: center;
-color: #fff;
-font-weight: 400;
-font-size: 17px;
-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-width: 50%;}
+.quotes p {font-size: 20px; line-height: 34px; -webkit-font-smoothing: antialiased; color:white;}
 
-.articles-thumbnail li {display: block; width: 30%; height: 140px; float: left; margin-top: 20px; margin: 10px; }
+.articles-thumbnail {margin-left: 8px;}
+
+.articles-thumbnail li {display: block; width: 31%; height: 100px; float: left; margin-top: 20px; margin: 10px; 
+ background-color: #F5F5F5;;
+border-radius: 4px;}
 
 .articles-thumbnail li:hover {
 	box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.15);
@@ -170,6 +161,8 @@ width: 50%;}
 
 .latest-articles-kiri {float: left; height: 100%;}
 .latest-articles-kiri img {
+	height: 75px;
+	width:75px;
 	border: 2px solid #FFF;
 	box-shadow: 0 1px 1px rgba(0,0,0,0.3);}
 	
@@ -177,14 +170,16 @@ width: 50%;}
 
 .latest-articles-kanan .articles-kanan-judul {margin-left: 8px; font-size: 16px; line-height: 17px; font-weight: bolder !important;  margin-top: 3px; width: 100%; padding-right: 3px;}
 
-.by { margin-left: 7px;}
+.latest-articles-kanan .articles-kanan-judul:hover {color: #FFC61A;}
+
+.by { margin-left: 7px; line-height: 1px !important;}
 
 .arrow-user {float :right;}
 
 
 .contributor {width: 100%;  }
 
-.contributor li {width: 335px; height: 140px; padding: 15px; box-shadow: 0 2px 2px rgba(0,0,0,0.15); background: white; border-radius: 4px; display: block; float: left; margin: 10px; -webkit-filter: grayscale(0.75) sepia(0.5);
+.contributor li {width: 335px; height: 140px; padding: 15px; box-shadow: 0 2px 2px rgba(0,0,0,0.15); background: white; border-radius: 10px; display: block; float: left; margin: 10px; -webkit-filter: grayscale(0.75) sepia(0.5);
 -moz-filter: grayscale(0.75) sepia(0.5);
 -ms-filter: grayscale(0.75) sepia(0.5);
 -o-filter: grayscale(0.75) sepia(0.5);

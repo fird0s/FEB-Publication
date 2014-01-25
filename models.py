@@ -17,12 +17,14 @@ class User(Document):
 	password = StringField(required=True)
 	birthday = DateTimeField(required=True)
 	gender = StringField(max_length=1, choices=GENDER, required=True)
+	
 	date_joined = DateTimeField()
 
 class Profile(Document):
 	author = ReferenceField(User)
 	alamat = StringField(max_length=80)
 	phone = StringField(max_length=20)
+	emergency_call = StringField(max_length=20)
 	website = StringField(max_length=80)
 	date_added = DateTimeField()
 	cv_url = StringField()

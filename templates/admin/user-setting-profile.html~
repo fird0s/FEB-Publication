@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="id">
 <head>
-	<title>Admin</title>
+	<title>{{ user.fullname }} | Admin</title>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">	
 </head>
 <style>
@@ -105,6 +105,11 @@ body {
                         <dl class="dl-horizontal">
                           <dt><u>Phone Number</u></dt>
                           <dd><input type="integer" name="phone" class="form-control" value="{{ profile.phone }}" > </dd>
+                        </dl>
+                        
+                        <dl class="dl-horizontal">
+                          <dt><u>Emergency Call</u></dt>
+                          <dd><input type="integer" name="emergency-call" class="form-control" value="{{ profile.phone }}" > </dd>
                         </dl>
                         
                         <dl class="dl-horizontal">

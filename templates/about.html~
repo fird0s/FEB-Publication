@@ -39,12 +39,12 @@
 <body>
 <div id="header">
 	<div class="container_24">
-		<div class="grid_22">
+		<div class="grid_24">
 			<ul class="menu">
-				<li><a href="#">Beranda</a></li>
+				<li><a href="{{ url_for('index') }}">Beranda</a></li>
 				<li><a href="#">Updates</a></li>
-				<li><a href="#">Contributor</a></li>
-				<li><a href="#">About</a></li>
+				<li><a href="{{ url_for('contributor') }}">Contributor</a></li>
+				<li><a href="">About</a></li>
 			</ul>
 		</div>
 	</div>
@@ -54,20 +54,20 @@
 </div>
 
 <div id="latest-articles" >
-		<p class="head-font">About Site.</p>
+		<li><p class="head-font">About Site.</p></li>
         <p style="padding: 13px; margin-top: -20px;">This site is a project at Fekon (Faculty of economic at Syiah Kuala University) to develop E-Learning System. 
         we have a motto "learning and sharing", we choice that because our site provide a lof of journal who lecturer fill it, and people can also can read that, we open all of our journal to public.<br>
         who want to be a contributor, you must have background at economics science like Management, Accountancy, Development, Marketing, Banking, and all about economics.
         </p>    
             
-        <p class="head-font">Who Develop This Site ?    </p>
-        <p style="padding: 13px; margin-top: -20px;"> <a href="#">Muhammad Firdaus</a> is who make this site, he also a student at Fekon, he coded this site from the scratch, he is a programmer.
+        <li><p class="head-font">Who Develop This Site ?    </p></li>
+        <p style="padding: 13px; margin-top: -20px;margin-left: 15px;"> <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> is who make this site, he also a student at Fekon, he coded this site from the scratch, he is a programmer.
         </p>
 
-	<p class="head-font">Who Maintaner at this site ?</p>
+	<li><p class="head-font">Who Maintaner at this site ?</p></li>
     
-        <p class="head-font">How To Be A Contributor ?    </p>
-        <p style="padding: 13px; margin-top: -20px;">Everyone can be a contributor, contributor is a people who fill her journal or journal's friends at this site. <br><br>
+        <li><p class="head-font">How To Be A Contributor ?    </p></li>
+        <p style="padding: 13px; margin-top: -20px; margin-left: 15px;">Everyone can be a contributor, contributor is a people who fill her journal or journal's friends at this site. <br><br>
         1. You must have Economics background, you can speek Indonesian language.<br>
         2. Your must register your self at this site, you can register <a href="#">here </a>.<br>
         3. Do not think You will  pay by us for your journal.<br>

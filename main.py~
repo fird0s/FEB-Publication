@@ -20,7 +20,10 @@ from models import *
 
 @elearning.route("/")
 def index():
-	return render_template("index.html")
+	get_all_user = User.objects
+	get_all_profile = Profile.objects
+	get_all_jurnal = Jurnal.objects[:10]
+	return render_template("index.html", get_all_user=get_all_user, get_all_jurnal=get_all_jurnal, get_all_profile=get_all_profile)
 
 @elearning.route('/contributor')
 def contributor():
@@ -92,9 +95,10 @@ def admin():
 		user = User.objects.get(username=get_user)
 		
 	else:
-		return redirect(url_for('index'))
-		
-	return render_template("admin/user-admin.html", user=user)
+		return redirect(url_for('login'))
+	myjurnal = list(Jurnal.objects(author = user).limit(10))
+	myjurnal.reverse()
+	return render_template("admin/user-admin.html", user=user, myjurnal=myjurnal)
 
 @elearning.route("/admin/setting-account", methods=["GET", "POST"])
 def setting_account():
@@ -131,9 +135,10 @@ def setting_profiles():
 		return redirect(url_for('index'))
 		
 	if request.method == "POST":
-		if request.form["alamat"] and request.form["phone"] and request.form["website"]:
+		if request.form["alamat"] and request.form["phone"] and request.form["website"] and request.form["emergency-call"]:
 			profile.alamat = request.form["alamat"]
 			profile.phone = request.form["phone"]
+			profile.emergency_call = request.form["emergency-call"]
 			profile.website = request.form["website"]
 			profile.save()
 		
@@ -200,6 +205,7 @@ def tambah_jurnal():
 		if not request.files["jurnal-files"]:	
 			return "Maaf anda belum memilih jurnal untuk diupload"
 		
+		
 		if request.form["jurnal-category"] and request.form["jurnal-name"] and request.form["jurnal-summary"]:
 			get_db = Jurnal(author=user, jurnal_name=request.form["jurnal-name"], date_added=datetime.datetime.now(), kategori=request.form["jurnal-category"], summary=request.form["jurnal-summary"])
 			get_db.save()
@@ -242,13 +248,39 @@ def edit_jurnal(route):
 	
 	if request.method == "POST":
 		if request.form["jurnal-name"] and request.form["jurnal-category"] and request.form["jurnal-summary"]:
-			pass
+			get_db.jurnal_name = request.form["jurnal-name"]
+			get_db.kategori = request.form["jurnal-category"]
+			get_db.summary = request.form["jurnal-summary"]
+			get_db.save()
 				
+		if request.files["jurnal-files"]:
+			os.remove("/home/fird0s/e-learning/static/uploads/jurnal/"+get_user+"/"+get_db.jurnal_location) 
+			namefile = request.files["jurnal-files"].filename
+			namefile = namefile.replace(" ", "-") + strftime("#%a%d%b%H:%M:%S", gmtime())
+			request.files["jurnal-files"].save("/home/fird0s/e-learning/static/uploads/jurnal/"+get_user+"/"+namefile)
+			get_db.jurnal_location = namefile
+			get_db.save()
+		
+		
 	return render_template("admin/user-edit-jurnal.html", user=user, get_db=get_db, get_all_cat=get_all_cat)
+
+@elearning.route("/admin/hapus/jurnal/<route>")
+def hapus_jurnal(route):
+	if "user" in session:
+		get_user = session.get("user", None)
+		user = User.objects.get(username=get_user)
+	else:
+		return redirect(url_for('index'))	
+		
+	get_db = Jurnal.objects.get(pk = ObjectId(route))
+	os.remove("/home/fird0s/e-learning/static/uploads/jurnal/"+get_user+"/"+get_db.jurnal_location)
+	get_db.delete()
+	return redirect(url_for('admin'))
+
 
 @elearning.route("/view/jurnal")
 def view_jurnal():
-	return "ok"
+	return render_template("view-jurnal.html")
 
 @elearning.route("/admin/logout")
 def admin_logout():	

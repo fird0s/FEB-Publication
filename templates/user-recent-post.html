@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title> Muhammad Firdaus | E-Learning Fekon</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/960_24_col_rtl.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+	
+</head>
+<body>
+<div id="header">
+	<div class="container_24">
+		<div class="grid_24">
+			<ul class="menu">
+				<li><a href="{{ url_for('index')}}">Beranda</a></li>
+				<li><a href="#">Updates</a></li>
+				<li><a href="{{ url_for('contributor')}}">Contributor</a></li>
+				<li><a href="{{ url_for('about') }}">About</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<style>
+
+
+.navbar {
+  margin-bottom: 10px; 
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
+    
+    
+</style>   
+   
+    
+<div class="penyangga">
+</div>
+
+
+<div id="search-form-tengah" class="container_24 push_7 contributor">
+	<form class="search-form-tengah" method="GET" action="{{ url_for('search_contributor') }}">
+		<input type="text" name="name" class="search-form-input" placeholder="Search Lecturer/Contributor">
+		<input type="submit" id="search-button" value="Search">
+	</form>
+</div>
+
+<style>
+body {background: #FFF !important;}
+#latest-articles {padding-bottom:0px;}
+
+</style>
+
+<div id="latest-articles" >
+		<div class="full-user"> 
+			<div class="full-user-in"> 
+				<div class="full-user-gambar">
+					<img class="img-thumbnail" style="width: 200px; height: 170px;" src="{{ url_for('static', filename='uploads/photo_profile/')}}{{ get_profile.profile_images_url }}"></img>
+					<ul>
+						<li>
+							<img src="{{ url_for('static', filename='images/111-user.png')}}" style="width: 20px;"> <a href="/user/{{get_username.username}}">Profile</a> </img>
+							
+						</li>
+					
+						<li>
+							<img src="{{ url_for('static', filename='images/37-suitcase.png')}}" style="width: 20px;"> <a href="#">Recent Post</a></img>
+							<span class="arrow-user">&#x2192; </span>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="full-user-name">
+					<p class="head-font"><u>{{ get_username.fullname }}</u></p>
+					<ul>
+						<li>
+							<img src="{{ url_for('static', filename='images/glyphicons_340_globe.png')}}"> {{ get_profile.alamat }}</img>
+						</li>
+						
+						<li>
+							<img src="{{ url_for('static', filename='images/18-envelope.png')}}"> {{ get_username.email }} </img>
+						</li><br>
+						
+						<li>
+							<img src="{{ url_for('static', filename='images/1390757762_aiga_telephone_bg.png')}}"> {{ get_profile.phone }} </img>
+						</li>
+						
+						<li class="">
+							 <b>Date Joined : </b> {{ get_username.date_joined.strftime('%B %d, %Y')  }}
+						</li>
+					</ul>
+				
+					<div class="full-user-name-bio">
+						
+    <table class="table table-striped custab">
+            {% if get_jurnal %}
+		    {% for jurnal in get_jurnal %}
+		            <tr>	
+		           
+		        	<td title=""> {{ jurnal.jurnal_name }} </td>
+		        	<td>
+					<a href="#" class="btn btn-success btn-xs"><span class="btn-icon icon-list"></span> View</a>
+			        </td>
+			        
+		            </li>
+		      
+		    {% endfor %}        		
+	    {% else %}
+	    <p class="head-font"> <u>Tidak ada jurnal</u>  </p>
+	    {% endif %}		    
+    </table>
+						
+					</div>
+					
+					
+				</div>
+				<br style="clear:both;"></hr>
+			</div>					
+		</div>
+</div>    
+	
+
+
+
+
+</body>
+</html>

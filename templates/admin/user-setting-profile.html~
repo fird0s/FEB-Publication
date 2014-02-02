@@ -31,7 +31,7 @@ body {
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">JURNAL<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li ><a  href="#">Semua Journal </a></li>
+                <li ><a  href="{{ url_for('admin') }}">Semua Journal </a></li>
                 <li ><a  href="{{ url_for('setting_jurnal') }}">Setting Journal</a></li>
                 <li ><a  href="{{ url_for('tambah_jurnal') }}">Tambah Journal</a></li>
               </ul>
@@ -109,12 +109,17 @@ body {
                         
                         <dl class="dl-horizontal">
                           <dt><u>Emergency Call</u></dt>
-                          <dd><input type="integer" name="emergency-call" class="form-control" value="{{ profile.phone }}" > </dd>
+                          <dd><input type="integer" name="emergency-call" class="form-control" value="{{ profile.emergency_call }}" > </dd>
                         </dl>
                         
                         <dl class="dl-horizontal">
                           <dt><u>Website / Blog</u></dt>
                           <dd><input type="text" class="form-control" name="website" value="{{ profile.website }}" > </dd>
+                        </dl>
+                        
+                        <dl class="dl-horizontal">
+                          <dt><u>About My Self</u></dt>
+                          <dd><textarea class="form-control" name="about-my-self" rows="20" required>{{ profile.about }}</textarea>  </dd>
                         </dl>
 
                         <dl class="dl-horizontal">

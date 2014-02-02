@@ -31,8 +31,8 @@
 </div>
     
 <div id="search-form-tengah" class="container_24 push_7 contributor">
-	<form class="search-form-tengah">
-		<input type="text" class="search-form-input" placeholder="Search Lecturer/Contributor">
+	<form class="search-form-tengah" method="GET" action="{{ url_for('search_contributor') }}">
+		<input type="text" name="search-contributor" class="search-form-input" placeholder="Search Lecturer/Contributor">
 		<input type="submit" id="search-button" value="Search">
 	</form>
 </div>
@@ -45,19 +45,31 @@
 		<ul class="contributor">
 		{% for x in get_db_user %}
 		    {% for y in get_db_profile(author=x) %}	
-			<li><a href="#">
+			<li><a href="/user/{{ x.username }}">
+			
+				{% if y.profile_images_url == None %}
 				<span class="contributor-kiri">
-					<img style="width: 75px; height: 75px;"src="{{ url_for('static', filename='uploads/photo_profile')}}/{{ y.profile_images_url }}"></img>
+					<img style="width: 75px; height: 75px;" src="{{ url_for('static', filename='images/no-images.jpg')}}"></img>
 											
-					</span>				
+				</span>				
+					
 				</span>
+				
+				{% else %}
+				
+				<span class="contributor-kiri">
+					<img style="width: 75px; height: 75px;" src="{{ url_for('static', filename='uploads/photo_profile')}}/{{ y.profile_images_url }}"></img>
+											
+				</span>				
+				
+				{% endif %}
 				
 				<span class="contributor-kanan">
 					<p class="contributor-nama">{{ x.fullname }}</p>				
 					<img src="{{ url_for('static', filename='images/web.gif')}}"> {{ y.website }} </img><br>
 					<img src="{{ url_for('static', filename='images/18-envelope.png')}}" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">  
 					 {{ x.email }}</img><br>
-					<img src="{{ url_for('static', filename='images/glyphicons_069_gift.png')}}" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">   <b>{{ x.birthday }}</b>  </img>
+					<img src="{{ url_for('static', filename='images/glyphicons_069_gift.png')}}" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">   <b>{{ x.birthday.strftime('%B %d, %Y') }}</b>  </img>
 				</span>
 			</a>
 			</li>

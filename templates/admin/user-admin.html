@@ -7,7 +7,7 @@
 </head>
 <style>
 body {
-  padding-top: 20px;
+  padding-top:10px;
   padding-bottom: 20px;
 }
 
@@ -28,7 +28,7 @@ body {
       
 
 .navbar {
-  margin-bottom: 10px; 
+  margin-bottom: 10px; }
 .custab{
     border: 1px solid #ccc;
     padding: 5px;
@@ -41,6 +41,7 @@ body {
     transition: 0.5s;
     }
     
+.table {margin-top: -10px;}    
     
 </style>
 
@@ -69,7 +70,7 @@ body {
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">JURNAL<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li ><a  href="#">Semua Journal </a></li>
+                <li ><a  href="{{ url_for('admin') }}">Semua Journal </a></li>
                 <li ><a  href="{{ url_for('tambah_jurnal') }}">Tambah Journal</a></li>
                 <li ><a  href="{{ url_for('setting_jurnal') }}">Setting Journal</a></li>
               </ul>
@@ -114,12 +115,7 @@ body {
 	         </ul>
 	</div>
 </div>
-</div>
 
-
-
-
-<div class="container">
     <table class="table table-striped custab">
     
     <thead>
@@ -141,7 +137,6 @@ body {
             </tr>
             
     </table>
-</div>
 	
 <div id="footer">
       <div class="container"><br>
@@ -161,8 +156,8 @@ $(document).ready(function(){
 		$('.table').css('opacity', "0.1");
 		$('.navbar').css('opacity', "0.1");
 		$('.new-jurnal').css('opacity', "0.1");
-		$(".pop-up").css("display", "block");		
-		
+		$(".pop-up").css("display", "block");
+				
 		$(".request_ya").click(function(){
 			window.location.href = "/admin/hapus/jurnal/"+hapus
 		});
@@ -176,11 +171,6 @@ $(document).ready(function(){
 		$('.table').css('opacity', "10");
 		$('.navbar').css('opacity', "10");
 		$('.new-jurnal').css('opacity', "10");		
-	});
-});
-
-$(document).ready(function(){
-	$(".request_ya").click(function(){
 	});
 });
 

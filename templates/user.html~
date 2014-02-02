@@ -10,18 +10,25 @@
 <body>
 <div id="header">
 	<div class="container_24">
-		<div class="grid_22">
+		<div class="grid_24">
 			<ul class="menu">
-				<li><a href="#">Beranda</a></li>
+				<li><a href="{{ url_for('index')}}">Beranda</a></li>
 				<li><a href="#">Updates</a></li>
-				<li><a href="#">Contributor</a></li>
-				<li><a href="#">About</a></li>
+				<li><a href="{{ url_for('contributor')}}">Contributor</a></li>
+				<li><a href="{{ url_for('about') }}">About</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
     
 <div class="penyangga">
+</div>
+
+<div id="search-form-tengah" class="container_24 push_7 contributor">
+	<form class="search-form-tengah" method="GET" action="{{ url_for('search_contributor') }}">
+		<input type="text" name="name" class="search-form-input" placeholder="Search Lecturer/Contributor">
+		<input type="submit" id="search-button" value="Search">
+	</form>
 </div>
 
 <style>
@@ -34,7 +41,7 @@ body {background: #FFF !important;}
 		<div class="full-user"> 
 			<div class="full-user-in"> 
 				<div class="full-user-gambar">
-					<img class="img-thumbnail" src="{{ url_for('static', filename='images/addyosmani.75.png')}}"></img>
+					<img class="img-thumbnail" style="width: 200px; height: 170px;" src="{{ url_for('static', filename='uploads/photo_profile/')}}{{ get_profile.profile_images_url }}"></img>
 					<ul>
 						<li>
 							<img src="{{ url_for('static', filename='images/111-user.png')}}" style="width: 20px;"> <a href="#">Profile</a> </img>
@@ -42,43 +49,56 @@ body {background: #FFF !important;}
 						</li>
 					
 						<li>
-							<img src="{{ url_for('static', filename='images/37-suitcase.png')}}" style="width: 20px;"> <a href="#">Recent Post</a></img>
+							<img src="{{ url_for('static', filename='images/37-suitcase.png')}}" style="width: 20px;"> <a href="/user/{{get_username.username}}/recent-post">Recent Post</a></img>
 						</li>
 						
-						<li>
-							<img src="{{ url_for('static', filename='images/18-envelope.png')}}" style="width: 20px;"> <a href="#">Contact Me</a></img>
-						</li>
 					</ul>
 				</div>
 				<div class="full-user-name">
-					<p class="head-font"><u>Muhammad Firdaus</u></p>
+					<p class="head-font"><u>{{ get_username.fullname }}</u></p>
 					<ul>
 						<li>
-							<img src="{{ url_for('static', filename='images/glyphicons_340_globe.png')}}"> Indonesia - Banda Aceh</img>
+							<img src="{{ url_for('static', filename='images/glyphicons_340_globe.png')}}"> {{ get_profile.alamat }}</img>
 						</li>
+						
 						<li>
-							<img src="{{ url_for('static', filename='images/37-suitcase.png')}}"> Lecturer - University of Syiah Kuala</img>
+							<img src="{{ url_for('static', filename='images/18-envelope.png')}}"> {{ get_username.email }} </img>
+						</li><br>
+						
+						<li>
+							<img src="{{ url_for('static', filename='images/1390757762_aiga_telephone_bg.png')}}"> {{ get_profile.phone }} </img>
+						</li>
+						
+						<li class="">
+							 <b title="Time joined on this site"><u>Date Joined</u> : </b> {{ get_username.date_joined.strftime('%B %d, %Y')  }}
 						</li>
 					</ul>
 				
 					<div class="full-user-name-bio">
-						<dl class="dl-horizontal">
-						  <dt><u>Bio</u></dt>
-						  <dd>A description list is perfect for defining terms, Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
-Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus</dd>
-						</dl>
 						
 						<dl class="dl-horizontal">
-						  <dt><u>Experiences</u></dt>
-						  <dd>A description list is perfect for defining terms, Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
-Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus</dd>
-						</dl>
+						  <dt><u>Date Birth</u> : </dt>
+						  <dd>{{ get_username.birthday.strftime('%B %d, %Y') }}</dd>
+						</dl>  
+						
 						
 						<dl class="dl-horizontal">
-						  <dt><u>Interests</u></dt>
-						  <dd>A description list is perfect for defining terms, Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
-Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus</dd>
+						  <dt><u>Emergency</u> : </dt>
+						  <dd>{{ get_profile.emergency_call }}</dd>
+						</dl>  
+						
+						<dl class="dl-horizontal">
+						  <dt><u>Website/Blog</u> : </dt>
+						  <dd>{{ get_profile.website }}</dd>
+						</dl>  
+						
+						<dl class="dl-horizontal">
+						  <dt><u>About My self</u> : </dt>
+						  <dd>{{ get_profile.about }}</dd>
 						</dl>
+						
+						
+						
 					</div>
 					
 					<div class="full-user-job">
@@ -87,9 +107,6 @@ Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magn
 								<a href="#"><img src="{{ url_for('static', filename='images/cv.png')}}">Download CV</img></a>
 							</li>
 							
-							<li>
-								<a href="#" style="background: #A0B5C8;"><img src="images/glyphicons_357_suitcase.png">Hire Me</img></a>
-							</li>
 						</ul>
 					</div>
 					

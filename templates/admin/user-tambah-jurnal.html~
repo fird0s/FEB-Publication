@@ -92,7 +92,7 @@ body {
                         <dl class="dl-horizontal">
                           <dt><u>Kategori </u></dt>
                           <dd><select name="jurnal-category" class="form-control">
-                              <option value="{{ get_all_cat.nama }}">{{ get_all_cat.nama }}</option>
+                          	<option value="Economic">Pilih Kategori</option>
                                {% for get_all_cat in get_all_cat %}<option value="{{ get_all_cat.nama }}">{{ get_all_cat.nama }}</option>
                                {% endfor %}
                               </select> </dd>

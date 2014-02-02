@@ -31,6 +31,33 @@ def contributor():
 	get_db_profile = Profile.objects
 	return render_template("contributor.html", get_db_user=get_db_user, get_db_profile=get_db_profile)
 	
+@elearning.route('/contributor/search-contributor')	
+def search_contributor():
+	data = request.args.get("name", "")
+	if request.method == "GET":
+		if request.args.get("name", ""):
+			get_db_user =  User.objects(fullname__icontains = request.args.get("name", ""))
+			get_db_profile = Profile.objects
+		else:
+			return redirect(url_for('contributor'))
+			error = "Maaf tidak ada nama %s" % (data)
+	return render_template("contributor-search.html", get_db_user=get_db_user, get_db_profile=get_db_profile, data=data)	
+	
+
+@elearning.route("/jurnal/")	
+def search_jurnal():
+	jurnal = request.args.get("jurnal", "no")
+	if request.method == "GET":
+		if request.args.get("jurnal", ""):
+			get_all_user = User.objects
+			get_all_profile = Profile.objects
+			get_all_jurnal = Jurnal.objects(jurnal_name__icontains = request.args.get("jurnal", ""))
+			
+		else:
+			return redirect(url_for('index'))
+			error = "Maaf tidak ada jurnal %s" % (jurnal)
+	return render_template("jurnal-search.html", get_all_user=get_all_user, get_all_jurnal=get_all_jurnal, get_all_profile=get_all_profile, jurnal=jurnal)
+	
 @elearning.route('/register', methods=["GET", "POST"])
 def register():
 	if "user" in session:
@@ -135,11 +162,12 @@ def setting_profiles():
 		return redirect(url_for('index'))
 		
 	if request.method == "POST":
-		if request.form["alamat"] and request.form["phone"] and request.form["website"] and request.form["emergency-call"]:
+		if request.form["alamat"] and request.form["phone"] and request.form["website"] and request.form["emergency-call"] and request.form["about-my-self"]:
 			profile.alamat = request.form["alamat"]
 			profile.phone = request.form["phone"]
 			profile.emergency_call = request.form["emergency-call"]
 			profile.website = request.form["website"]
+			profile.about = request.form["about-my-self"]
 			profile.save()
 		
 		if request.files["Image-Profile"]:
@@ -281,16 +309,26 @@ def hapus_jurnal(route):
 @elearning.route("/view/jurnal/<route>")
 def view_jurnal(route):
 	return render_template("view-jurnal.html")
-
+	
 @elearning.route("/admin/logout")
 def admin_logout():	
 	session.pop("user", None)				
 	return redirect(url_for('index'))
 	
 	
-@elearning.route('/user/<email>')
-def user(email):
-	return render_template("user.html")		
+@elearning.route('/user/<username>')
+def user(username):
+	get_username = User.objects.get(username=username)
+	get_profile = Profile.objects.get(author = get_username)
+	return render_template("user.html", get_username=get_username, get_profile=get_profile)		
+	
+@elearning.route('/user/<username>/recent-post')	
+def user_recent_post(username):	
+	get_username = User.objects.get(username=username)
+	get_profile = Profile.objects.get(author = get_username)
+	get_user = User.objects.get(username=username)
+	get_jurnal = Jurnal.objects(author=get_user)
+	return render_template("user-recent-post.html", get_username=get_username, get_profile=get_profile, get_jurnal=get_jurnal)
 	
 @elearning.route('/about')
 def about():

@@ -30,6 +30,7 @@ class Profile(Document):
 	cv_url = StringField()
 	profile_images_url = StringField(max_length=300)	
 	password_jurnal = StringField(max_length=100)
+	about = StringField(max_length=2000)
 	meta = {'allow_inheritance': True}
 	
 class Kategori(Document):
@@ -43,7 +44,7 @@ class Jurnal(Document):
 	jurnal_location = StringField(max_length=100)
 	date_added = DateTimeField()
 	kategori = StringField(max_length=100)
-	summary = StringField(max_length=800)
+	summary = StringField(max_length=2000)
 	
 
 	

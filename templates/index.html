@@ -48,7 +48,7 @@
 				<li><a href="#">Updates</a></li>
 				<li><a href="{{ url_for('contributor')}}">Contributor</a></li>
 				<li><a href="{{ url_for('about') }}">About</a></li>
-				<li class="btn btn-default" style="float: right; margin-top: -7px;"><a href="{{ url_for('admin') }}">Halaman Admin</a></li>
+				<li class="btn btn-default btn-xs" style="float: right; margin-top: -3px;"><a href="{{ url_for('admin') }}">Halaman Admin</a></li>
 			</ul>
 		</div>
 	</div>
@@ -81,7 +81,7 @@
 				margin-right: 40px;
 				"
 			> See the tour </button>
-			<a class="btn btn-primary btn-lg" href="{{ url_for('login') }}">Sing in here</a>
+			<a class="btn btn-success btn-lg" href="{{ url_for('login') }}">Sing in here</a>
 	  	 </div>	
 	  </div>	 
 		
@@ -89,15 +89,15 @@
 </div>
 
 <div id="search-form-tengah" class="container_24 push_7 ">
-	<form class="search-form-tengah">
-		<input type="text" class="search-form-input" placeholder="Mencari Jurnal">
+	<form class="search-form-tengah" method="GET" action="{{ url_for('search_jurnal') }}">
+		<input type="text" name="jurnal"class="search-form-input" placeholder="Search Journal">
 		<input type="submit" id="search-button" value="Search">
 	</form>
 </div>
 <!--<hr style="padding-top: 15px;margin-top: 15px;position: relative;display: block;border-top: 1px solid #cbcbcb;">-->
 <div class="">
 	<div id="latest-articles">
-		<p class="head-font"> NEW JURNAL </p><!--http://dpaste.com/1540516/-->
+		<p class="head-font"> <u>New Journal</u> </p><!--http://dpaste.com/1540516/-->
 		<p style="float: right; margin-top: -50px; margin-right: 20px;" class="btn btn-info" >RSS</p>	
 		<ul class="articles-thumbnail" style="padding-left: 0px;"> 
 		
@@ -140,6 +140,7 @@
 	<br>
 	
 	<br>
+	
 	
 </div>
 <div id="footer">

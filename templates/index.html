@@ -35,6 +35,8 @@
       .container .credit {
         margin: 20px 0;
       }
+      
+      .dropdown{margin-top: -15px !important; }
 </style>	
 	
 </head>
@@ -45,10 +47,26 @@
 		<div class="grid_24">
 			<ul class="menu">
 				<li><a href="{{ url_for('index')}}">Beranda</a></li>
-				<li><a href="#">Updates</a></li>
+				<li><a href="{{ url_for('category') }}">Category</a></li>
 				<li><a href="{{ url_for('contributor')}}">Contributor</a></li>
 				<li><a href="{{ url_for('about') }}">About</a></li>
-				<li class="btn btn-default btn-xs" style="float: right; margin-top: -3px;"><a href="{{ url_for('admin') }}">Halaman Admin</a></li>
+				{% if auth %}
+				<ul class="nav navbar-nav navbar-right">            
+				    <li class="dropdown">
+				      <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="/static/images/111-user.png"></img> {{ get_user.fullname }} <b class="caret"></b></a>
+				      <ul class="dropdown-menu">
+					<li><a href="{{ url_for('admin')}}">Halaman Admin</a></li>
+					<li class="divider"></li>
+					<li><a href="/admin/logout">Logout</a></li>
+				      </ul>
+            			     </li>
+				</ul>
+				
+				{% else %}
+				
+				
+				{% endif %}
+
 			</ul>
 		</div>
 	</div>
@@ -60,8 +78,8 @@
 	   <div class="grid_24">
 		<div class="quotes">
 			<h1>Start learning now.</h1>
-			<p>Completely free, forever.</p><br><br>
-			<button type="button" class="btn btn-default btn-lg" style="-webkit-font-smoothing: antialiased;
+			<h2>Memberi dan Mengakses Ilmu <br>Kapanpun Dimanapun Sesuka Kita Tanpa Batas</h2><br><br>
+			<a href="https://www.youtube.com/watch?v=v0MS0TvmWHs"><button type="button" class="btn btn-default btn-lg" style="-webkit-font-smoothing: antialiased;
 				display: inline-block;
 				vertical-align: middle;
 				zoom: 1;
@@ -80,7 +98,7 @@
 				transition: all 0.2s linear;
 				margin-right: 40px;
 				"
-			> See the tour </button>
+			> See the tour </button></a>
 			<a class="btn btn-success btn-lg" href="{{ url_for('login') }}">Sing in here</a>
 	  	 </div>	
 	  </div>	 
@@ -97,7 +115,7 @@
 <!--<hr style="padding-top: 15px;margin-top: 15px;position: relative;display: block;border-top: 1px solid #cbcbcb;">-->
 <div class="">
 	<div id="latest-articles">
-		<p class="head-font"> <u>New Journal</u> </p><!--http://dpaste.com/1540516/-->
+		<p class="head-font"> <u>New Post</u> </p><!--http://dpaste.com/1540516/-->
 		<p style="float: right; margin-top: -50px; margin-right: 20px;" class="btn btn-info" >RSS</p>	
 		<ul class="articles-thumbnail" style="padding-left: 0px;"> 
 		
@@ -113,7 +131,7 @@
 				
 				{% else %}
 				
-				<a href="#"><span class="latest-articles-kiri">
+				<a href="{{ url_for('view_summary', route=get_jurnal.pk)}}"><span class="latest-articles-kiri">
 					<img src="{{ url_for('static', filename='uploads/photo_profile')}}/{{ get_profile.profile_images_url }}"></img>
 				</span>
 				
@@ -148,6 +166,10 @@
         <p class="muted credit">Full Developed by <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> | &copy; Copyright fe.unsyiah.ac.id 2014  </p>
       </div>
 </div>
+
+
+<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script> 
 
 </body>
 </html>

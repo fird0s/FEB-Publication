@@ -93,29 +93,25 @@ body {background: #FFF !important;}
 						</li>
 						
 						<li class="">
-							 <b>Date Joined : </b> {{ get_username.date_joined.strftime('%B %d, %Y')  }}
+							 <b><u>Date Joined</u> : </b> {{ get_username.date_joined.strftime('%B %d, %Y')  }}
 						</li>
 					</ul>
 				
 					<div class="full-user-name-bio">
 						
     <table class="table table-striped custab">
-    		<ol>
             {% if get_jurnal %}
 		    {% for jurnal in get_jurnal %}
-			    <li>	
 		            <tr>	
 		           
 		        	<td title=""> {{ jurnal.jurnal_name }} </td>
 		        	<td>
-					<a href="#" class="btn btn-success btn-xs"><span class="btn-icon icon-list"></span> View</a>
+					<a href="{{ url_for('view_summary', route=jurnal.pk) }}" class="btn btn-success btn-xs"><span class="btn-icon icon-list"></span> View</a>
 			        </td>
 			        
-		            </tr>		
 		            </li>
 		      
 		    {% endfor %}        		
-	        </ol>	    
 	    {% else %}
 	    <p class="head-font"> <u>Tidak ada jurnal</u>  </p>
 	    {% endif %}		    

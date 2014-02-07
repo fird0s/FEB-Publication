@@ -32,7 +32,7 @@
     
 <div id="search-form-tengah" class="container_24 push_7 contributor">
 	<form class="search-form-tengah" method="GET" action="{{ url_for('search_contributor') }}">
-		<input type="text" name="search-contributor" class="search-form-input" placeholder="Search Lecturer/Contributor">
+		<input type="text" name="name" class="search-form-input" placeholder="Search Lecturer/Contributor">
 		<input type="submit" id="search-button" value="Search">
 	</form>
 </div>

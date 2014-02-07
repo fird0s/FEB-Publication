@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title> About | E-Learning Fekon</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/960_24_col_rtl.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+<style>
+ #footer {
+        background-color: #f5f5f5;
+        text-align:center;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
+
+      #latest-articles {padding: 10px;}	
+      
+      .head-font:hover { text-decoration:underline;}
+
+      /* Custom page CSS
+      -------------------------------------------------- */
+      /* Not required for template or sticky footer method. */
+
+      .container {
+        width: auto;
+        max-width: 680px;
+      }
+      .container .credit {
+        margin: 20px 0;
+      }
+</style>	
+</head>
+<body>
+<div id="header">
+	<div class="container_24">
+		<div class="grid_24">
+			<ul class="menu">
+				<li><a href="{{ url_for('index') }}">Beranda</a></li>
+				<li><a href="{{ url_for('category') }}">Category</a></li>
+				<li><a href="{{ url_for('contributor') }}">Contributor</a></li>
+				<li><a href="{{ url_for('about') }}">About</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+    
+<div class="penyangga">
+</div>
+
+<div id="latest-articles" style="padding-left: 60px;">
+		<p class="head-font" style="width: 99%;"><a href="{{ url_for('view_jurnal', route=get_jurnal.pk) }}" style="color: black;">{{ get_jurnal.jurnal_name }}</a></p>
+		<p class="text-muted" style="margin-top: -20px; margin-left: 10px">by <a href="{{ url_for('user', username=get_jurnal.author.username )}}">{{ get_jurnal.author.fullname }}</a>, Type: {{ get_jurnal.jenis_jurnal.nama }} | on {{ get_jurnal.date_added.strftime('%B %d, %Y')  }}</p><br>
+		<h4 style="margin-left: 10px;">Summary/Abstract : </h4>
+		<p style="margin-left: 10px; width: 80%; text-align:justify;">
+		{{ get_jurnal.summary }}
+		
+		</p>
+		
+		<p class="text-info" style="margin-left: 10px;"><a href="{{ url_for('view_jurnal', route=get_jurnal.pk) }}">Full Text PDF</a></p>	
+		<div class="aboutme">
+			<div class="aboutme-img">
+				 <img class="media-object dp img-circle" src="{{ url_for('static', filename='uploads/photo_profile')}}/{{ get_profile.profile_images_url }}" style="width: 150px;height:150px;">
+			</div>			
+			
+			<div class="aboutme-user">
+				<h4>{{ get_jurnal.author.fullname }}</h4>
+				<p class="" style="margin-top: -7px;">{{ get_profile.alamat }}</p>
+				<hr style="margin-top: -7px;">
+				<p title="{{ get_profile.about }}">{{ get_profile.about | truncate(200) }} </p>
+			</div>
+		</div>	
+			
+</div><br>
+
+
+<div id="footer">
+      <div class="container">
+        <p class="muted credit">Full Developed by <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> | &copy; Copyright Fekon Unsyiah 2014 - 2018 </p>
+      </div>
+</div>
+
+
+
+</body>
+</html>

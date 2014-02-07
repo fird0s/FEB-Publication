@@ -37,18 +37,23 @@ class Kategori(Document):
 	nama = StringField(max_length=50)
 	about_category = StringField()
 	date_added = DateTimeField()
+	
 
+class Jenis_Jurnal(Document):
+	nama = StringField(max_length=50)
+	about_jenis = StringField()
+	data_added = DateTimeField()	
+		
 class Jurnal(Document):
 	author = ReferenceField(User)
 	jurnal_name = StringField(max_length=500)
 	jurnal_location = StringField(max_length=100)
 	date_added = DateTimeField()
+	jenis_jurnal = ReferenceField(Jenis_Jurnal)
 	kategori = StringField(max_length=100)
+	reader_count = IntField()
 	summary = StringField(max_length=2000)
-	
 
-	
-	
 		
 
 

@@ -83,7 +83,7 @@ body {background: #FFF !important;}
 						
 						
 						<dl class="dl-horizontal">
-						  <dt><u>Emergency</u> : </dt>
+						  <dt title="emergency call"><u>Emergency</u> : </dt>
 						  <dd>{{ get_profile.emergency_call }}</dd>
 						</dl>  
 						

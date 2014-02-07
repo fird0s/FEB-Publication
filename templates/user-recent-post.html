@@ -13,7 +13,7 @@
 		<div class="grid_24">
 			<ul class="menu">
 				<li><a href="{{ url_for('index')}}">Beranda</a></li>
-				<li><a href="#">Updates</a></li>
+				<li><a href="{{ url_for('category') }}">Category</a></li>
 				<li><a href="{{ url_for('contributor')}}">Contributor</a></li>
 				<li><a href="{{ url_for('about') }}">About</a></li>
 			</ul>
@@ -93,7 +93,7 @@ body {background: #FFF !important;}
 						</li>
 						
 						<li class="">
-							 <b>Date Joined : </b> {{ get_username.date_joined.strftime('%B %d, %Y')  }}
+							 <b><u>Date Joined</u> : </b> {{ get_username.date_joined.strftime('%B %d, %Y')  }}
 						</li>
 					</ul>
 				
@@ -106,7 +106,7 @@ body {background: #FFF !important;}
 		           
 		        	<td title=""> {{ jurnal.jurnal_name }} </td>
 		        	<td>
-					<a href="#" class="btn btn-success btn-xs"><span class="btn-icon icon-list"></span> View</a>
+					<a href="{{ url_for('view_summary', route=jurnal.pk) }}" class="btn btn-success btn-xs"><span class="btn-icon icon-list"></span> View</a>
 			        </td>
 			        
 		            </li>

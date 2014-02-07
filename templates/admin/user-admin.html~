@@ -64,13 +64,12 @@ body {
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">BERANDA<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li ><a  href="{{ url_for('index') }}">Halaman Website</a></li>
-                <li ><a  href="{{ url_for('admin') }}">Halaman Admin</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">JURNAL<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li ><a  href="#">Semua Journal </a></li>
+                <li ><a  href="{{ url_for('admin') }}">Semua Journal </a></li>
                 <li ><a  href="{{ url_for('tambah_jurnal') }}">Tambah Journal</a></li>
                 <li ><a  href="{{ url_for('setting_jurnal') }}">Setting Journal</a></li>
               </ul>
@@ -126,8 +125,8 @@ body {
                     <tr>	
                 	<td title="{{ myjurnal.jurnal_name | title }}">{{ myjurnal.jurnal_name | title | truncate (130) }} </td>
                 	<td>
-				<a href="#" class="btn btn-success btn-xs"><span class="btn-icon icon-list"></span> View</a>
-				<a href="/admin/edit_jurnal/{{myjurnal.pk}}" class='btn btn-info btn-xs' ><span class="btn-icon icon-edit"></span> Edit</a> 
+				<a href="{{ url_for('view_summary', route=myjurnal.pk) }}" class="btn btn-success btn-xs"><span class="btn-icon icon-list"></span> View</a>
+				<a href="/admin/edit/jurnal/{{myjurnal.pk}}" class='btn btn-info btn-xs' ><span class="btn-icon icon-edit"></span> Edit</a> 
 				<a href="#" class="btn btn-danger btn-xs hapuss"><span class="btn-icon icon-remove"></span> Del</a>
 				<p style="display: none;">{{ myjurnal.pk }}</p>
 	                </td>

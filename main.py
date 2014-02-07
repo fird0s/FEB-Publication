@@ -18,6 +18,10 @@ elearning = Flask(__name__)
 #MongoEngine library
 from models import *
 
+@elearning.route("/ckeditor")
+def ckeditor():
+	return render_template("replacebyclass.html")
+
 
 @elearning.route("/")
 def index():

@@ -61,10 +61,10 @@
 		<p class="head-font" style="width: 99%;"><a href="{{ url_for('view_jurnal', route=get_jurnal.pk) }}" style="color: black;">{{ get_jurnal.jurnal_name }}</a></p>
 		<p class="text-muted" style="margin-top: -20px; margin-left: 10px">by <a href="{{ url_for('user', username=get_jurnal.author.username )}}">{{ get_jurnal.author.fullname }}</a>, Type: {{ get_jurnal.jenis_jurnal.nama }} | on {{ get_jurnal.date_added.strftime('%B %d, %Y')  }}</p><br>
 		<h4 style="margin-left: 10px;">Summary/Abstract : </h4>
-		<p style="margin-left: 10px; width: 80%; text-align:justify;">
-		{{ get_jurnal.summary }}
+		<div class="editor_ckeditor" style="margin-left: 10px; width: 80%; text-align:justify;">
+		{{ get_jurnal.summary |safe}}
 		
-		</p>
+		</div>
 		
 		<p class="text-info" style="margin-left: 10px;"><a href="{{ url_for('view_jurnal', route=get_jurnal.pk) }}">Full Text PDF</a></p>	
 		<div class="aboutme">

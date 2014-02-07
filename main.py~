@@ -285,7 +285,9 @@ def edit_jurnal(route):
 		return "You have not permission to edit this"
 	
 	if request.method == "POST":
-		if request.form["jurnal-name"] and request.form["jurnal-category"] and request.form["jurnal-summary"]:
+		if request.form["jurnal-name"] and request.form["jurnal-category"] and request.form["jurnal-summary"] and request.form["JenisJurnal"]:
+			JenisJurnal = Jenis_Jurnal.objects.get(nama=request.form["JenisJurnal"])
+			get_db.jenis_jurnal = JenisJurnal
 			get_db.jurnal_name = request.form["jurnal-name"]
 			get_db.kategori = request.form["jurnal-category"]
 			get_db.summary = request.form["jurnal-summary"]

@@ -116,7 +116,7 @@ body {
                        
                         <dl class="dl-horizontal">
                           <dt><u>Summary/Ringkasan</u></dt>
-                          <dd><textarea class="form-control" name="jurnal-summary" rows="20" required></textarea> </dd>
+                          <dd><textarea class="form-control ckeditor" id="editor1" name="jurnal-summary" rows="20" required></textarea> </dd>
                         </dl>
 
                         <dl class="dl-horizontal">
@@ -130,7 +130,8 @@ body {
 
 	
 	<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
-<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script> 
+	<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script> 
+	<script type="text/javascript" src="{{ url_for('static', filename='ckeditor/ckeditor.js')}}"></script>
  
 </body>
 </html>

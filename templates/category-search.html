@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html lang="id">
+<html>
+<head>
+	<title> E-Learning Fekon</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/960_24_col_rtl.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+<style>
+ #footer {
+        background-color: #f5f5f5;
+        text-align:center;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
+
+      /* Custom page CSS
+      -------------------------------------------------- */
+      /* Not required for template or sticky footer method. */
+
+      .container {
+        width: auto;
+        max-width: 680px;
+      }
+      .container .credit {
+        margin: 20px 0;
+      }
+      
+      .dropdown{margin-top: -15px !important; }
+</style>	
+	
+</head>
+<body>
+<a href="https://github.com"><img style="position: fixed; top: 0px; left: 10; border: 0; margin-left: 20px; z-index: 2;" title="Versi Percobaan" src="{{ url_for('static', filename='images/beta-ribbon.png')}}" alt="Testing Mode"></img></a>
+<div id="header" style="position: fixed;">
+	<div class="container_24">
+		<div class="grid_24">
+			<ul class="menu">
+				<li><a href="{{ url_for('index')}}">Beranda</a></li>
+				<li><a href="{{ url_for('category') }}">Category</a></li>
+				<li><a href="{{ url_for('contributor')}}">Contributor</a></li>
+				<li><a href="{{ url_for('about') }}">About</a></li>
+				{% if auth %}
+				<ul class="nav navbar-nav navbar-right">            
+				    <li class="dropdown">
+				      <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="/static/images/111-user.png"></img> {{ get_user.fullname }} <b class="caret"></b></a>
+				      <ul class="dropdown-menu">
+					<li><a href="{{ url_for('admin')}}">Halaman Admin</a></li>
+					<li class="divider"></li>
+					<li><a href="/admin/logout">Logout</a></li>
+				      </ul>
+            			     </li>
+				</ul>
+				
+				{% else %}
+				
+				
+				{% endif %}
+
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<br><br><br><br>
+
+<!--<hr style="padding-top: 15px;margin-top: 15px;position: relative;display: block;border-top: 1px solid #cbcbcb;">-->
+<div class="">
+	<div id="latest-articles">
+		<p class="head-font"> <u>Category : {{ get_cat.nama }} </u> </p><!--http://dpaste.com/1540516/-->
+		<ul class="articles-thumbnail" style="padding-left: 0px;"> 
+		
+		{% for get_user in get_all_user %}	
+			{% for get_jurnal in get_all_jurnal(author=get_user) | reverse  %}
+				{% for get_profile in get_all_profile(author=get_user) %}
+			<li>
+				{% if get_profile.profile_images_url == None %}
+				
+				<a href="#"><span class="latest-articles-kiri">
+					<img src="{{ url_for('static', filename='images/no-images.jpg')}}"></img>
+				</span>
+				
+				{% else %}
+				
+				<a href="{{ url_for('view_summary', route=get_jurnal.pk)}}"><span class="latest-articles-kiri">
+					<img src="{{ url_for('static', filename='uploads/photo_profile')}}/{{ get_profile.profile_images_url }}"></img>
+				</span>
+				
+				
+				
+				{% endif %}
+				
+				<span class="latest-articles-kanan">
+					<p class="articles-kanan-judul" title="{{ get_jurnal.jurnal_name }}">{{ get_jurnal.jurnal_name | title | truncate (80)}}</p>
+					<a class="by" href="#"> #{{ get_jurnal.kategori }}  </a>
+				</span
+				</a>
+			</li>
+				{% endfor %}		
+			{% endfor %}		
+		{% endfor %}	
+			
+			
+			
+			
+			<br style="clear: both"></br>
+		</ul>
+	</div>
+	<br>
+	
+	<br>
+	
+	
+</div>
+<div id="footer">
+      <div class="container">
+        <p class="muted credit">Full Developed by <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> | &copy; Copyright fe.unsyiah.ac.id 2014  </p>
+      </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script> 
+
+</body>
+</html>

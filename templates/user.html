@@ -94,21 +94,21 @@ body {background: #FFF !important;}
 						
 						<dl class="dl-horizontal">
 						  <dt><u>About My self</u> : </dt>
-						  <dd>{{ get_profile.about }}</dd>
+						  <dd>{{ get_profile.about | safe}}</dd>
 						</dl>
 						
 						
 						
 					</div>
 					
-					<div class="full-user-job">
+					<!--<div class="full-user-job">
 						<ul>
 							<li>
 								<a href="#"><img src="{{ url_for('static', filename='images/cv.png')}}">Download CV</img></a>
 							</li>
 							
 						</ul>
-					</div>
+					</div>-->
 					
 				</div>
 				<br style="clear:both;"></hr>

@@ -77,13 +77,13 @@
 			<li>
 				{% if get_profile.profile_images_url == None %}
 				
-				<a href="#"><span class="latest-articles-kiri">
+				<a href=""><span class="latest-articles-kiri">
 					<img src="{{ url_for('static', filename='images/no-images.jpg')}}"></img>
 				</span>
 				
 				{% else %}
 				
-				<a href="#"><span class="latest-articles-kiri">
+				<a href="{{ url_for('view_summary', route=get_jurnal.pk)}}"><span class="latest-articles-kiri">
 					<img src="{{ url_for('static', filename='uploads/photo_profile')}}/{{ get_profile.profile_images_url }}"></img>
 				</span>
 				
@@ -93,7 +93,7 @@
 				
 				<span class="latest-articles-kanan">
 					<p class="articles-kanan-judul" title="{{ get_jurnal.jurnal_name }}">{{ get_jurnal.jurnal_name | title | truncate (80)}}</p>
-					<a class="by" href="#"> #{{ get_jurnal.kategori }}  </a>
+					<a class="by" href="{{ url_for('search_cat', category=get_jurnal.kategori) }}"> #{{ get_jurnal.kategori }}  </a>
 				</span
 				</a>
 			</li>

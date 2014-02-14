@@ -37,6 +37,22 @@
       }
       
       .dropdown{margin-top: -15px !important; }
+      
+      .navbar {
+  margin-bottom: 10px; }
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
+    
+.table {margin-top: -10px;}    
 </style>	
 	
 </head>
@@ -113,13 +129,18 @@
 	</form>
 </div>
 <!--<hr style="padding-top: 15px;margin-top: 15px;position: relative;display: block;border-top: 1px solid #cbcbcb;">-->
+
+
+
+
+
 <div class="">
 	<div id="latest-articles">
-		<p class="head-font"> <u>New Post</u> </p><!--http://dpaste.com/1540516/-->
+		<p class="head-font"> <u>New Post :</u> </p><!--http://dpaste.com/1540516/-->
 		<p style="float: right; margin-top: -50px; margin-right: 20px;" class="btn btn-info" >RSS</p>	
 		<ul class="articles-thumbnail" style="padding-left: 0px;"> 
 		
-		{% for get_user in get_all_user %}	
+		{% for get_user in get_all_user | reverse %}	
 			{% for get_jurnal in get_all_jurnal(author=get_user) | reverse  %}
 				{% for get_profile in get_all_profile(author=get_user) %}
 			<li>
@@ -141,7 +162,7 @@
 				
 				<span class="latest-articles-kanan">
 					<p class="articles-kanan-judul" title="{{ get_jurnal.jurnal_name }}">{{ get_jurnal.jurnal_name | title | truncate (80)}}</p>
-					<a class="by" href="#"> #{{ get_jurnal.kategori }}  </a>
+					<a class="by" href="{{ url_for('search_cat', category=get_jurnal.kategori) }}"> #{{ get_jurnal.kategori }}  </a>
 				</span
 				</a>
 			</li>
@@ -161,9 +182,48 @@
 	
 	
 </div>
+
+<div id="latest-articles" style="padding-bottom: 0px;">
+<table class="table table-striped custab">
+<p class="head-font"> <u>Category  :</u> </p> 
+		    {% for kategori in get_all_cat %}
+                    <tr>	
+                	<td> <a href="{{ url_for('search_cat', category=kategori.nama) }}">{{ kategori.nama }}</a> </td>
+                	<td>:
+				<a href="{{ url_for('search_cat', category=kategori.nama) }}" title="{{ kategori.about_category }}" class='btn btn-info btn-xs' ><span class="btn-icon icon-edit"></span>  {{kategori.about_category | truncate (150)}}</a> 
+	                </td>
+                    </tr>		
+                    
+                    {% endfor %}
+                    	
+
+                
+    </table>
+</div>
+
+<div id="latest-articles" style="padding-bottom: 0px;">
+<table class="table table-striped custab">
+<p class="head-font"> <u>Type of Journal  :</u> </p> 
+		    {% for get_all_jenis in get_all_jenis %}
+                    <tr>	
+                	<td title="Lalalalala"> <a href="">{{ get_all_jenis.nama }}</a> </td>
+                	<td>:
+				<a href="" title="{{ get_all_jenis.about_jenis }}" class='btn btn-success btn-xs' ><span class="btn-icon icon-edit"></span>{{ get_all_jenis.about_jenis }}</a> 
+	                </td>
+                    </tr>		
+                    
+                    {% endfor %}
+                    	
+
+                
+    </table>
+</div>
+
+
+    
 <div id="footer">
       <div class="container">
-        <p class="muted credit">Full Developed by <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> | &copy; Copyright fe.unsyiah.ac.id 2014  </p>
+        <p class="muted credit">Developed by <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> | &copy; Copyright fe.unsyiah.ac.id 2014  </p>
       </div>
 </div>
 

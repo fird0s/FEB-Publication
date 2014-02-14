@@ -61,7 +61,7 @@
 		<p class="head-font" style="width: 99%;"><a href="{{ url_for('view_jurnal', route=get_jurnal.pk) }}" style="color: black;">{{ get_jurnal.jurnal_name }}</a></p>
 		<p class="text-muted" style="margin-top: -20px; margin-left: 10px">by <a href="{{ url_for('user', username=get_jurnal.author.username )}}">{{ get_jurnal.author.fullname }}</a>, Type: {{ get_jurnal.jenis_jurnal.nama }} | on {{ get_jurnal.date_added.strftime('%B %d, %Y')  }}</p><br>
 		<h4 style="margin-left: 10px;">Summary/Abstract : </h4>
-		<div class="lala" style="margin-left: 10px; width: 80%; text-align:justify;">
+		<div class="editor_ckeditor" style="margin-left: 10px; width: 80%; text-align:justify;">
 		{{ get_jurnal.summary |safe}}
 		
 		</div>
@@ -76,7 +76,7 @@
 				<h4>{{ get_jurnal.author.fullname }}</h4>
 				<p class="" style="margin-top: -7px;">{{ get_profile.alamat }}</p>
 				<hr style="margin-top: -7px;">
-				<p title="{{ get_profile.about }}">{{ get_profile.about | truncate(200) }} </p>
+				<p title="{{ get_profile.about }}">{{ get_profile.about | truncate(200) | safe}} </p>
 			</div>
 		</div>	
 			
@@ -85,10 +85,9 @@
 
 <div id="footer">
       <div class="container">
-        <p class="muted credit">Full Developed by <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> | &copy; Copyright Fekon Unsyiah 2014 - 2018 </p>
+        <p class="muted ">Full Developed by <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> | &copy; Copyright Fekon Unsyiah 2014 - 2018 </p>
       </div>
 </div>
-
 
 
 </body>

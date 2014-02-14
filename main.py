@@ -32,14 +32,21 @@ def index():
 		get_user = User.objects.get(username = session.get("user", None))
 	get_all_user = User.objects
 	get_all_profile = Profile.objects
-	get_all_jurnal = Jurnal.objects[:10]
-	return render_template("index.html", get_all_user=get_all_user, get_all_jurnal=get_all_jurnal, get_all_profile=get_all_profile, auth=auth, get_user=get_user)
+	get_all_jurnal = Jurnal.objects[:30]
+	get_all_cat = Kategori.objects.limit(8)
+	get_all_jenis = Jenis_Jurnal.objects
+	return render_template("index.html", get_all_user=get_all_user, get_all_jurnal=get_all_jurnal, get_all_profile=get_all_profile, auth=auth, get_user=get_user, get_all_cat=get_all_cat,get_all_jenis=get_all_jenis)
 
 @elearning.route('/contributor')
 def contributor():
+	get_user = ""
+	auth = None
+	if "user" in session:
+		auth = True
+		get_user = User.objects.get(username = session.get("user", None))
 	get_db_user = User.objects
-	get_db_profile = Profile.objects
-	return render_template("contributor.html", get_db_user=get_db_user, get_db_profile=get_db_profile)
+	get_db_profile = Profile.objects[0:3]
+	return render_template("contributor.html", get_db_user=get_db_user, get_db_profile=get_db_profile, auth=auth, get_user=get_user)
 	
 @elearning.route('/contributor/search-contributor')	
 def search_contributor():
@@ -364,7 +371,25 @@ def user_recent_post(username):
 	
 @elearning.route("/category")
 def category():
-	return render_template("category.html")	
+	get_user = ""
+	auth = None
+	if "user" in session:
+		auth = True
+		get_user = User.objects.get(username = session.get("user", None))
+	return render_template("category.html", auth=auth, get_user=get_user)	
+	
+@elearning.route("/category/<category>")
+def search_cat(category):	
+	get_user = ""
+	auth = None
+	if "user" in session:
+		auth = True
+		get_user = User.objects.get(username = session.get("user", None))
+	get_all_user = User.objects
+	get_all_profile = Profile.objects
+	get_all_jurnal = Jurnal.objects(kategori=category)[:10]	
+	get_cat = Kategori.objects.get(nama=category)
+	return render_template("category-search.html", auth=auth, get_user=get_user,  get_all_user=get_all_user, get_all_jurnal=get_all_jurnal, get_all_profile=get_all_profile, get_cat=get_cat)
 	
 @elearning.route('/about')
 def about():

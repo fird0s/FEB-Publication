@@ -161,6 +161,7 @@ def setting_account():
 				get_db.email = request.form ["email"]
 				get_db.password = request.form["password"]
 				get_db.gender = request.form["gender"]
+				get_db.nip = request.form["nip"]
 				get_db.birthday=date(int(request.form["year"]), int(request.form["month"]),int(request.form["day"]))
 				get_db.save()
 				print "sukses ganti %s" % (request.form ["fullname"])

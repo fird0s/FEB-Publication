@@ -101,6 +101,11 @@ body {
                           <dt><u>Alamat</u></dt>
                           <dd><input type="text" name="alamat" class="form-control" value="{{ profile.alamat }}" ></dd>
                         </dl>
+
+                        <dl class="dl-horizontal">
+                          <dt><u>NIP</u></dt>
+                          <dd><input type="text" name="nip" class="form-control" value="{{ profile.nip }}" ></dd>
+                        </dl>
                         
                         <dl class="dl-horizontal">
                           <dt><u>Phone Number</u></dt>
@@ -116,7 +121,8 @@ body {
                           <dt><u>Website / Blog</u></dt>
                           <dd><input type="text" class="form-control" name="website" value="{{ profile.website }}" > </dd>
                         </dl>
-                        
+
+
                         <dl class="dl-horizontal">
                           <dt><u>About My Self</u></dt>
                           <dd><textarea class="form-control ckeditor" id="editor1" name="about-my-self" rows="10" required>{{ profile.about }}</textarea>  </dd>

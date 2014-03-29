@@ -193,7 +193,7 @@ filter: grayscale(0.75) sepia(0.5);
 -o-transition: all .3s ease-out;
 transition: all .3s ease-out;*/}
 
-.contributor li:hover {-webkit-filter: hue-rotate(50deg);  }
+.contributor li:hover {-webkit-filter: hue-rotate(50deg); background: #F5F5F5;  }
 
 .contributor li a {color: black; }
 
@@ -215,4 +215,7 @@ transition: all .3s ease-out;*/}
 
 .aboutme-user {float: left; margin-left: 30px; width: 60%;}
 
+.dropdown-menu li{
+	margin: 0px;	
+}
 

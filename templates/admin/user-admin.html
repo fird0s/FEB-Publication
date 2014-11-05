@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="id">
+<head>
+	<title>{{ user.fullname }} | Admin</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">	
+   	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font/font-awesome.min.css')}}"> 
+</head>
+<style>
+body {
+  padding-top:10px;
+  padding-bottom: 20px;
+}
+
+#footer {
+        background-color: #f5f5f5;
+        text-align:center;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+      
+
+.navbar {
+  margin-bottom: 10px; }
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
+    
+.table {margin-top: -10px;}    
+    
+</style>
+
+
+<body>
+<div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">BERANDA<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li ><a  href="{{ url_for('index') }}">Halaman Website</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">JURNAL<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li ><a  href="{{ url_for('admin') }}">Semua Journal </a></li>
+                <li ><a  href="{{ url_for('setting_jurnal') }}">Setting Journal</a></li>
+                <li ><a  href="{{ url_for('tambah_jurnal') }}">Tambah Journal</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">            
+            <li class="dropdown">
+            
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ url_for('static', filename='images/111-user.png')}}"></img> {{ user.fullname }} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ url_for('setting_account') }}">Setting Account</a></li>
+                <li><a href="{{ url_for('setting_profiles') }}">Setting Profile</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
+               <!-- <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>-->
+              </ul>
+           
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+
+      <!--Main-->
+      
+
+</div> <!-- /container -->
+<div class="container">
+<div class="navbar">
+	<div class="navbar-inner">
+		<ul class="breadcrumb">
+	                                    
+	                                    <i class="icon-chevron-right show-sidebar" style="display:none;"><a href="#" title="Show Sidebar" rel="tooltip">&nbsp;</a></i>
+	                                    <li>
+	                                        <a href="/user/{{ user.id }}">{{ user.fullname }}</a> 
+	                                    </li>
+	                                    <li>
+	                                        <a href="#">Jurnal</a>
+	                                    </li>
+	                                    <li class="active">Semua Jurnal</li>
+	         </ul>
+	</div>
+</div>
+
+    <table class="table table-striped custab">
+    
+    <thead>
+    <a href="{{ url_for('tambah_jurnal') }}" class="btn btn-primary btn-xs pull-left new-jurnal"><b>+</b> Add new jurnal </a>
+    </thead>
+            <br><br>
+                {% for myjurnal in myjurnal %}
+                    <tr>	
+                	<td title="{{ myjurnal.jurnal_name | title }}">{{ myjurnal.jurnal_name | title | truncate (130) }} </td>
+                	<td>
+				<a href="{{ url_for('view_summary', route=myjurnal.pk) }}" class="btn btn-success btn-xs"><span class="btn-icon icon-list"></span> View</a>
+				<a href="/admin/edit/jurnal/{{myjurnal.pk}}" class='btn btn-info btn-xs' ><span class="btn-icon icon-edit"></span> Edit</a> 
+				<a href="#" class="btn btn-danger btn-xs hapuss"><span class="btn-icon icon-remove"></span> Del</a>
+				<p style="display: none;">{{ myjurnal.pk }}</p>
+	                </td>
+                    </tr>		
+                {% endfor %}
+                
+            </tr>
+            
+    </table>
+	
+<div id="footer">
+      <div class="container"><br>
+        <p class="muted credit">Full Developed by <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> | &copy; Copyright Fekon Unsyiah 2014 - 2018 </p>
+      </div>
+</div>  
+
+<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script> 
+
+<script>
+$(document).ready(function(){
+	$(".hapuss").click(function(){
+	        var maop = $(this).parent().prev().text();
+	        var hapus = $(this).next('p').text();
+	        $(".nama_jurnal").html(maop + " ?");
+		$('.table').css('opacity', "0.1");
+		$('.navbar').css('opacity', "0.1");
+		$('.new-jurnal').css('opacity', "0.1");
+		$(".pop-up").css("display", "block");
+				
+		$(".request_ya").click(function(){
+			window.location.href = "/admin/hapus/jurnal/"+hapus
+		});
+		
+	});	
+});
+
+$(document).ready(function(){
+	$(".tidak").click(function(){
+		$(".pop-up").css("display", "none");
+		$('.table').css('opacity', "10");
+		$('.navbar').css('opacity', "10");
+		$('.new-jurnal').css('opacity', "10");		
+	});
+});
+
+</script>
+<div class="container" style="position:fixed; top:35%; left: 35%; width: 30%;">
+	<div class="">
+		<div class="modal-content pop-up" style="display:none;">
+			    <div class="modal-body">
+			      <b>Apakah Anda ingin menghapus jurnal </b>
+			      <p class="nama_jurnal"></p> 
+			      <button type="button" class="btn btn-default tidak">Tidak </button>
+			      <button type="button" class="btn btn-primary request_ya">Iya </button>
+			    </div>
+		</div><!-- /.modal-content -->
+	</div>	
+</div>
+</body>
+</html>

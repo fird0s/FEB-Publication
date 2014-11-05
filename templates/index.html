@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html lang="id">
+<html>
+<head>
+	<title> E-Learning Fekon</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/960_24_col_rtl.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+<style>
+	body {background: white !important c;}
+ #footer {
+        background-color: #f5f5f5;
+        text-align:center;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
+
+      /* Custom page CSS
+      -------------------------------------------------- */
+      /* Not required for template or sticky footer method. */
+
+      .container {
+        width: auto;
+        max-width: 680px;
+      }
+      .container .credit {
+        margin: 20px 0;
+      }
+      
+      .dropdown{margin-top: -15px !important; }
+      
+      .navbar {
+  margin-bottom: 10px; }
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
+    
+    
+    
+.table {margin-top: -10px;}    
+
+.dropdown-menu li{
+	margin: 0px;	
+}
+</style>	
+	
+</head>
+<body>
+<a href="https://github.com"><img style="position: fixed; top: 0px; left: 10; border: 0; margin-left: 20px; z-index: 2;" title="Versi Percobaan" src="{{ url_for('static', filename='images/beta-ribbon.png')}}" alt="Testing Mode"></img></a>
+<div id="header" style="position: fixed;">
+	<div class="container_24">
+		<div class="grid_24">
+			<ul class="menu">
+				<li><a href="{{ url_for('index')}}">Beranda</a></li>
+				<li><a href="{{ url_for('category') }}">Category</a></li>
+				<li><a href="{{ url_for('contributor')}}">Contributor</a></li>
+				<li><a href="{{ url_for('about') }}">About</a></li>
+				{% if auth %}
+				<ul class="nav navbar-nav navbar-right">            
+				    <li class="dropdown">
+				      <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="/static/images/111-user.png"></img> {{ get_user.fullname }} <b class="caret"></b></a>
+				      <ul class="dropdown-menu">
+					<li><a href="{{ url_for('admin')}}">Halaman Admin</a></li>
+					<li class="divider"></li>
+					<li><a href="/admin/logout">Logout</a></li>
+				      </ul>
+            			     </li>
+				</ul>
+				
+				{% else %}
+				
+				
+				{% endif %}
+
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<div id="header-bg">
+	<div class="container_24">
+	   <div class="grid_24">
+		<div class="quotes">
+			<h1>Start learning now.</h1>
+			<h2>Memberi dan Mengakses Ilmu <br>Kapanpun Dimanapun Sesuka Kita Tanpa Batas</h2><br><br>
+			<a href="https://www.youtube.com/watch?v=v0MS0TvmWHs"><button type="button" class="btn btn-default btn-lg" style="-webkit-font-smoothing: antialiased;
+				display: inline-block;
+				vertical-align: middle;
+				zoom: 1;
+				color: #fff;
+				padding: 12px 31px;
+				border: 2px solid #fff;
+				border-radius: 4px;
+				font-size: 16px;
+				font-weight: 400;
+				background: rgba(0, 0, 0, 0.15);
+				text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+				-webkit-transition: all 0.2s linear;
+				-moz-transition: all 0.2s linear;
+				-ms-transition: all 0.2s linear;
+				-o-transition: all 0.2s linear;
+				transition: all 0.2s linear;
+				margin-right: 40px;
+				"
+			> See the tour </button></a>
+			<a class="btn btn-success btn-lg" href="{{ url_for('login') }}">Sing in here</a>
+	  	 </div>	
+	  </div>	 
+		
+	</div>
+</div>
+
+<div id="search-form-tengah" class="container_24 push_7 ">
+	<form class="search-form-tengah" method="GET" action="{{ url_for('search_jurnal') }}">
+		<input type="text" name="jurnal"class="search-form-input" placeholder="Search Journal">
+		<input type="submit" id="search-button" value="Search">
+	</form>
+</div>
+<!--<hr style="padding-top: 15px;margin-top: 15px;position: relative;display: block;border-top: 1px solid #cbcbcb;">-->
+
+
+<!--
+<div id="latest-articles" style="padding-bottom: 0px;">
+<table class="table table-striped custab">
+<p class="head-font"> <u>Type of Journal  :</u> </p> 
+		    {% for get_all_jenis in get_all_jenis %}
+                    <tr>	
+                	<td title="Lalalalala"> <a href="">{{ get_all_jenis.nama }}</a> </td>
+                	<td>:
+				<a href="" title="{{ get_all_jenis.about_jenis }}" class='btn btn-success btn-xs' ><span class="btn-icon icon-edit"></span>{{ get_all_jenis.about_jenis }}</a> 
+	                </td>
+                    </tr>		
+                    
+                    {% endfor %}
+                    	
+
+                
+    </table>
+</div>
+-->
+
+<div class="">
+	<div id="latest-articles">
+		<p class="head-font"> <u>New Post :</u> </p><!--http://dpaste.com/1540516/-->
+		<p style="float: right; margin-top: -50px; margin-right: 20px;" class="btn btn-info" >RSS</p>	
+		<ul class="articles-thumbnail" style="padding-left: 0px;"> 
+		
+		{% for get_user in get_all_user | reverse %}	
+			{% for get_jurnal in get_all_jurnal(author=get_user) | reverse  %}
+				{% for get_profile in get_all_profile(author=get_user) %}
+			<li>
+				{% if get_profile.profile_images_url == None %}
+				
+				<a href="#"><span class="latest-articles-kiri">
+					<img src="{{ url_for('static', filename='images/no-images.jpg')}}"></img>
+				</span>
+				
+				{% else %}
+				
+				<a href="{{ url_for('view_summary', route=get_jurnal.pk)}}"><span class="latest-articles-kiri">
+					<img src="{{ url_for('static', filename='uploads/photo_profile')}}/{{ get_profile.profile_images_url }}"></img>
+				</span>
+				
+				
+				
+				{% endif %}
+				
+				<span class="latest-articles-kanan">
+					<p class="articles-kanan-judul" title="{{ get_jurnal.jurnal_name }}">{{ get_jurnal.jurnal_name | title | truncate (80)}}</p>
+					<a class="by" href="{{ url_for('search_cat', category=get_jurnal.kategori) }}"> #{{ get_jurnal.kategori }}  </a>
+				</span
+				</a>
+			</li>
+				{% endfor %}		
+			{% endfor %}		
+		{% endfor %}	
+			
+			
+			
+			
+			<br style="clear: both"></br>
+		</ul>
+	</div>
+	<br>
+	
+	<br>
+	
+	
+</div>
+
+
+<!--
+<div id="latest-articles" style="padding-bottom: 0px;">
+<table class="table table-striped custab">
+<p class="head-font"> <u>Category  :</u> </p> 
+		    {% for kategori in get_all_cat %}
+                    <tr>	
+                	<td> <a href="{{ url_for('search_cat', category=kategori.nama) }}">{{ kategori.nama }}</a> </td>
+                	<td>:
+				<a href="{{ url_for('search_cat', category=kategori.nama) }}" title="{{ kategori.about_category }}" class='btn btn-info btn-xs' ><span class="btn-icon icon-edit"></span>  {{kategori.about_category | truncate (150)}}</a> 
+	                </td>
+                    </tr>		
+                    
+                    {% endfor %}
+                    	
+
+                
+    </table>
+</div>
+-->
+
+
+
+    
+<div id="footer">
+      <div class="container">
+        <p class="muted credit">Developed by <a href="http://firdaus.jones.dk">Muhammad Firdaus</a> | &copy; Copyright fe.unsyiah.ac.id 2014  </p>
+      </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script> 
+
+</body>
+</html>

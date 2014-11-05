@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title> Contributor | E-Learning Fekon</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/960_24_col_rtl.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+	
+</head>
+<style>
+#latest-articles {background:#EEEEEE !important;	
+	box-shadow: 0 0px 0px rgba(0,0,0,0.15);
+}
+
+  .dropdown{margin-top: -15px !important; }
+
+</style>
+<body>
+<div id="header">
+	<div class="container_24">
+		<div class="grid_24">
+			<ul class="menu">
+				<li><a href="{{ url_for('index')}}">Beranda</a></li>
+				<li><a href="{{ url_for('category') }}">Category</a></li>
+				<li><a href="{{ url_for('contributor')}}">Contributor</a></li>
+				<li><a href="{{ url_for('about') }}">About</a></li>
+				{% if auth %}
+				<ul class="nav navbar-nav navbar-right">            
+				    <li class="dropdown">
+				      <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="/static/images/111-user.png"></img> {{ get_user.fullname }} <b class="caret"></b></a>
+				      <ul class="dropdown-menu">
+					<li><a href="{{ url_for('admin')}}">Halaman Admin</a></li>
+					<li class="divider"></li>
+					<li><a href="/admin/logout">Logout</a></li>
+				      </ul>
+            			     </li>
+				</ul>
+				
+				{% else %}
+				
+				
+				{% endif %}
+
+			</ul>
+		</div>
+	</div>
+</div>
+    
+<div class="penyangga">
+</div>
+    
+<div id="search-form-tengah" class="container_24 push_7 contributor">
+	<form class="search-form-tengah" method="GET" action="{{ url_for('search_contributor') }}">
+		<input type="text" name="name" class="search-form-input" placeholder="Search Lecturer/Contributor">
+		<input type="submit" id="search-button" value="Search">
+	</form>
+</div>
+
+
+    
+
+<div id="latest-articles" >
+		<p class="head-font"></p>
+		<ul class="contributor">
+		{% for x in get_db_user | reverse %}
+		    {% for y in get_db_profile(author=x) %}	
+			<li><a href="/user/{{ x.username }}">
+			
+				{% if y.profile_images_url == None %}
+				<span class="contributor-kiri">
+					<img style="width: 75px; height: 75px;" src="{{ url_for('static', filename='images/no-images.jpg')}}"></img>
+											
+				</span>				
+					
+				</span>
+				
+				{% else %}
+				
+				<span class="contributor-kiri">
+					<img style="width: 75px; height: 75px;" src="{{ url_for('static', filename='uploads/photo_profile')}}/{{ y.profile_images_url }}"></img>
+											
+				</span>				
+				
+				{% endif %}
+				
+				<span class="contributor-kanan">
+					<p class="contributor-nama">{{ x.fullname }}</p>				
+					<img src="{{ url_for('static', filename='images/web.gif')}}"> {{ y.website }} </img><br>
+					<img src="{{ url_for('static', filename='images/18-envelope.png')}}" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">  
+					 {{ x.email }}</img><br>
+					<img src="{{ url_for('static', filename='images/glyphicons_069_gift.png')}}" style="margin-left: 1px; margin-right: 2px; width: 14px; height: 13px;">   <b>{{ x.birthday.strftime('%B %d, %Y') }}</b>  </img>
+				</span>
+			</a>
+			</li>
+		     {% endfor %}
+		{% endfor %}		
+		</ul>
+</div>    
+	<!--<hr style="margin-top: 45px;position: relative;display: block;border-top: 1px solid #cbcbcb;"></hr>-->
+
+
+<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script> 
+
+</body>
+</html>

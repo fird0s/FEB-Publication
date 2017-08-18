@@ -1,0 +1,6 @@
+.DS_Store
+*.py~
+*.pyc~
+*.httml~
+*.css~
+*.js~
